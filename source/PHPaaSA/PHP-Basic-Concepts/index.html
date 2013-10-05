@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>PHP Basic Concepts - PHP as a Social Activity - Presentation</title>
+		<link rel="stylesheet" href="../../css/reveal.min.css">
+		<link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="../../css/PHPaaSA.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>PHP</h1>
+						<h2>Basic Concepts</h2>
+						<img class="stretch no-border" src="assets/PHP-Basic-Concepts.png" alt="PHP Basic Concepts">
+					</section>
+					<section>
+						<img class="stretch no-border" src="../../images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
+						<p>Presented by Sam Likins<br>PHP as a Social Activity</p>
+					</section>
+					<section>
+						<h2>Topics</h2>
+						<p>In this presentation we'll cover the following:</p>
+						<ul>
+							<li class="fragment" data-fragment-index="0">Parsing <span class="fragment" data-fragment-index="1">&ndash; Reading and Interpreting of a program</span></li>
+							<li class="fragment" data-fragment-index="0">Basic Syntax <span class="fragment" data-fragment-index="2">&ndash; Principles of constructing statements</span></li>
+							<li class="fragment" data-fragment-index="0">Types <span class="fragment" data-fragment-index="3">&ndash; Value distinction</span></li>
+							<li class="fragment" data-fragment-index="0">Variables <span class="fragment" data-fragment-index="4">&ndash; A place to store values (read-write)</span></li>
+							<li class="fragment" data-fragment-index="0">Constants <span class="fragment" data-fragment-index="5">&ndash; A place to store a value (read-only)</span></li>
+							<li class="fragment" data-fragment-index="0">Expressions <span class="fragment" data-fragment-index="6">&ndash; A place to get a value</span></li>
+							<li class="fragment" data-fragment-index="0">Operators <span class="fragment" data-fragment-index="7">&ndash; A value from one or more other values</span></li>
+							<li class="fragment" data-fragment-index="0">Control Structures <span class="fragment" data-fragment-index="8">&ndash; Manipulate programs direction of flow</span></li>
+							<li class="fragment" data-fragment-index="0">Functions <span class="fragment" data-fragment-index="9">&ndash; A callable routine that can take and return values</span></li>
+							<li class="fragment" data-fragment-index="0">Language Specific (PHP) <span class="fragment" data-fragment-index="10">&ndash; What makes PHP, PHP</span></li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Parsing</h2>
+						<p>Reading and Interpreting of a program</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Basic Syntax</h2>
+						<p>Principles of constructing statements</p>
+						<ul>
+							<li class="fragment" data-fragment-index="0">PHP Tags</li>
+							<li class="fragment" data-fragment-index="1">Escaping</li>
+							<li class="fragment" data-fragment-index="2">Instruction Separation</li>
+							<li class="fragment" data-fragment-index="3">Comments</li>
+						</ul>
+					</section>
+					<section>
+						<h3>PHP Tags</h3>
+						<p>Opening and Closing tags</p>
+						<ol>
+							<li class="fragment" data-fragment-index="0">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?php</code></strong> and <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="1">Always Available</span>
+							</li>
+							<li class="fragment" data-fragment-index="0">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;script language="php"&gt;</code></strong> and <strong><code class="fragment highlight-green" data-fragment-index="9">&lt;/script&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="1">Always Available</span>
+							</li>
+							<li class="fragment" data-fragment-index="2">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?</code></strong> and <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="3">Short Style</span>
+							</li>
+							<li class="fragment" data-fragment-index="2">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?=</code></strong> and <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="3"><span class="fragment" data-fragment-index="4">Echo - </span>Short Style</span>
+							</li>
+							<li class="fragment" data-fragment-index="5">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%</code></strong> and <strong><code class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="6">ASP Style</span>
+							</li>
+							<li class="fragment" data-fragment-index="5">
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%=</code></strong> and <strong><cod class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="6"><span class="fragment" data-fragment-index="7">Echo - </span>ASP Style</span>
+							</li>
+						</ol>
+						<p class="fragment" data-fragment-index="8">The <strong class="fragment highlight-blue" data-fragment-index="8">opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
+						<p class="fragment" data-fragment-index="9">The <strong class="fragment highlight-green" data-fragment-index="9">closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
+						<aside class="notes">
+							<ul>
+								<li>Tag Sets 1 and 2 are always available
+									<ul>
+										<li>Other tag sets should be avoided when developing for redistribution</li>
+										<li>Set 1 is most common and recommended</li>
+									</ul>
+								</li>
+								<li>Tag Sets 3 and 4 are Short style – Requires a configuration change
+									<ul>
+										<li>Configuration file (php.ini) – short_open_tag</li>
+										<li>Compiled with --enable-short-tags</li>
+										<li>Since ver 5.4 parser recognizes short tags regardless of configuration</li>
+									</ul>
+								</li>
+								<li>Tag Sets 5 and 6 are ASP style – Requires a configuration change
+									<ul>
+										<li>Configuration file (php.ini) – asp_tags</li>
+									</ul>
+								</li>
+								<li>Since ver 5.3 parser allows an opening tag (minimum of one white space character) by itself in a file</li>
+								<li>A Close tag at the end of the file is optional
+									<ul>
+										<li>Helpful so unwanted white space does not occur</li>
+									</ul>
+								</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Escaping</h3>
+						<p></p>
+					</section>
+					<section>
+						<h3>Instruction Separation</h3>
+						<p></p>
+					</section>
+					<section>
+						<h3>Comments</h3>
+						<p></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Types</h2>
+						<p>Value distinction.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Variables</h2>
+						<p>A place to store values (read-write).</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Constants</h2>
+						<p>A place to store a value (read-only).</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Expressions</h2>
+						<p>A place to get a value.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Operators</h2>
+						<p>A value from one or more other values.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Control Structures</h2>
+						<p>Manipulate programs direction of flow.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Functions</h2>
+						<p>A callable routine that can take and return values.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Language Specific (PHP)</h2>
+						<p>What makes PHP, PHP.</p>
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="../../js/head.min.js"></script>
+		<script src="../../js/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				history: true,
+				mouseWheel: true,
+				dependencies: [
+					{ src: '../../js/plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>

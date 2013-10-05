@@ -1,0 +1,64 @@
+div.reveal {
+	font-size: 32px;
+	letter-spacing: -0.05em;
+}
+.reveal h2 {
+	font-size: 1.8em;
+	font-weight: bold;
+	text-shadow: 2px 2px 0px rgb(127, 127, 127);
+}
+.reveal h3 {
+	font-size: 1.25em;
+	font-weight: bold;
+}
+.reveal h4 {
+	font-weight: bold;
+	padding-top: 0.5ex;
+	text-shadow: 2px 2px 0px rgb(127, 127, 127);
+}
+.reveal section img.no-border {
+	border: 0;
+	box-shadow: none;
+}
+.shadow {
+	text-shadow: 2px 2px 0px rgb(127, 127, 127);
+}
+.reveal .center {
+	text-align: center;
+}
+.reveal .right {
+	text-align: right;
+}
+.reveal .float-right {
+	float: right;
+}
+.reveal p {
+	margin: 1em;
+}
+.reveal ol, .reveal ul {
+	line-height: 1.5em;
+	width: 100%;
+}
+.reveal li.aside {
+	list-style-type: none;
+}
+.reveal li.code {
+	margin: 0 0 0 -1em;
+}
+.reveal pre {
+	background-color: rgba(0, 0, 0, .05);
+	box-shadow: 0 0 8px rgba(0, 0, 0, .4);
+	display: block;
+	line-height: 1.2em;
+	text-align: left;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+	white-space: pre;
+	width: 100%;
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.reveal .smaller {
+	font-size: 85%;
+}

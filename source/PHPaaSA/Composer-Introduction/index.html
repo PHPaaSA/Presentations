@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Composer Introduction - PHP as a Social Activity - Presentation</title>
+		<link rel="stylesheet" href="../../css/reveal.min.css">
+		<link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="../../css/PHPaaSA.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Composer</h1>
+						<h2>Introduction</h2>
+						<img class="stretch no-border" src="assets/logo-composer-transparent.png" alt="Composer Logo">
+					</section>
+					<section>
+						<img class="stretch no-border" src="../../images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
+						<p>Presented by Sam Likins<br>PHP as a Social Activity</p>
+					</section>
+					<section>
+						<h2>What is Composer?</h2>
+						<p class="fragment" data-fragment-index="0"><strong>Composer</strong> is a project <span class="shadow">dependency manager</span>,<br><strong>not</strong> a <s>package manager</s>.</p>
+						<p class="fragment" data-fragment-index="1">Inspired by <span class="shadow">Ruby Bundler</span> and <span class="shadow">Node.JS npm</span></p>
+						<p class="fragment" data-fragment-index="2"><span class="shadow">Cross-platform</span> compatible (Windows, Linux, and OSX)<br>Requires &gt;= <span class="shadow">PHP 5.3.2</span> and<br>optionally <span class="shadow">Subversion</span>, <span class="shadow">GIT</span>, and/or <span class="shadow">Mercurial</span>
+						<p class="fragment" data-fragment-index="3">Released under the <span class="shadow">MIT license</span><br>Developed by: <a href="http://naderman.de/">Nils Adermann</a> and <a href="http://nelm.io/jordi">Jordi Boggiano</a></p>
+					</section>
+					<section>
+						<h2>What Problems are Solved?</h2>
+						<ul>
+							<li class="fragment" data-fragment-index="0">Manages dependent libraries</li>
+							<li class="aside right shadow fragment" data-fragment-index="0"><em>- Your project needs other projects</em></li>
+							<li class="fragment" data-fragment-index="1">Handles cascading dependencies</li>
+							<li class="aside right shadow fragment" data-fragment-index="1"><em>- These other projects need additional projects</em></li>
+							<li class="fragment" data-fragment-index="2">Declarative dependency</li>
+							<li class="aside right shadow fragment" data-fragment-index="2"><em>- Specify the project needs in writing</em></li>
+							<li class="fragment" data-fragment-index="3">Install and update dependencies</li>
+							<li class="aside right shadow fragment" data-fragment-index="3"><em>- Download and maintain projects</em></li>
+							<li class="fragment" data-fragment-index="4">Autoload dependencies</li>
+							<li class="aside right shadow fragment" data-fragment-index="4"><em>- Configure projects for use in you project</em></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Installing</h2>
+						<h3>On <span class="shadow">Linux</span> and <span class="shadow">OSX</span></h3>
+						<ul>
+							<li class="fragment" data-fragment-index="0"><strong>Locally</strong> (within your project)</li>
+							<li class="aside code fragment" data-fragment-index="1">
+								<pre><code data-trim>
+ $ curl -sS http://getcomposer.org/installer | php
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="0"><strong>Globally</strong> (system wide)</li>
+							<li class="aside code fragment" data-fragment-index="2">
+								<pre><code data-trim>
+ $ curl -sS http://getcomposer.org/installer | php
+ $ sudo mv composer.phar /usr/local/bin/composer
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Installing</h2>
+						<h3>On <span class="shadow">Windows</span> (Globally)</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="0"><strong>Installer</strong></li>
+							<li class="aside center fragment" data-fragment-index="1"><em>Download and run</em> <a href="https://getcomposer.org/Composer-Setup.exe">Composer-Setup.exe</a></li>
+							<li class="fragment" data-fragment-index="0"><strong>Manually</strong></li>
+							<li class="aside code fragment" data-fragment-index="2">
+								<pre><code data-trim>
+ C:\> cd C:\bin
+ C:\bin> php ­r "eval('?>'. file_get_contents('https://getcomposer.org/installer'));"
+ C:\bin> echo @php "%~dp0composer.phar" %*>composer.bat
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Basic Usage</h2>
+						<ul>
+							<li class="fragment" data-fragment-index="0"><strong>Locally</strong></li>
+							<li class="aside code fragment" data-fragment-index="1">
+								<pre><code data-trim>
+ $ php composer.phar
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="0"><strong>Globally</strong></li>
+							<li class="aside code fragment" data-fragment-index="2">
+								<pre><code data-trim>
+ $ composer
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="0"><strong>Display Composer Version</strong></li>
+							<li class="aside code fragment" data-fragment-index="3">
+								<pre><code data-trim>
+ $ composer -v
+ <span style="color: green;">composer</span> version <span style="color: goldenrod;">692015c12b4299dcee92bded7968b21a4b345891</span>
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Project Setup</h2>
+						<p><strong>Composer</strong> uses a <span class="shadow">composer.json</span> file in the root of your project.</p>
+						<p class="fragment" data-fragment-index="0">To create this file, you can write it <strong>manually</strong> or run <strong>initialization</strong></p>
+						<pre class="fragment" data-fragment-index="1"><code data-trim>
+ $ composer init
+
+   Welcome to the Composer config generator
+
+ This command will guide you through creating your composer.json config.
+ <span style="color: green;">Package name (&lt;vendor&gt;/&lt;name&gt;)</span> [<span style="color: goldenrod;">vendor/package</span>]:
+ <span style="color: green;">Description</span> []: Description of your project
+ <span style="color: green;">Author</span> [<span style="color: goldenrod;">User Name</span> &lt;name@example.com&gt;]:
+ <span style="color: green;">Minimum Stability</span> []:
+ <span style="color: green;">License</span> []: GPL­3.0+
+ Define your dependencies.
+ <span style="color: green;">Would you like to define your dependencies (require) interactively</span> [<span style="color: goldenrod;">yes</span>]? no
+ <span style="color: green;">Would you like to define your dev dependencies (require­dev) interactively</span> [<span style="color: goldenrod;">yes</span>]? no
+						</code></pre>
+					</section>
+					<section>
+						<h2>Project Setup</h2>
+						<pre class="fragment" data-fragment-index="0"><code data-trim>
+ {
+     "name": "vendor/package",
+     "description": "Description of your project",
+     "license": "GPL­3.0+",
+     "authors": [
+         {
+             "name": "User Name",
+             "email": "user@example.com"
+         }
+     ],
+     "require": {
+     }
+ }
+
+ <span style="color: green;">Do you confirm generation</span> [<span style="color: goldenrod;">yes</span>]?
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">A <span class="shadow">composer.json</span> file is now in the root directory of your project.</p>
+					</section>
+					<section>
+						<h2>Packages &amp; Libraries</h2>
+						<ul>
+							<li class="fragment" data-fragment-index="0">A directory with a composer.json file is a package</li>
+							<li class="fragment" data-fragment-index="1">A package with a name is a library</li>
+							<li class="fragment" data-fragment-index="2">A library can be required by another package</li>
+						</ul>
+						<pre class="fragment" data-fragment-index="3"><code data-trim>
+ {
+     "name": "vendor/package",
+     "require": {
+     }
+ }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Require</h2>
+						<ul class="fragment" data-fragment-index="0">
+							<li>Vendor / Package <span class="shadow">Name</span></li>
+							<li>Package <span class="shadow">Version</span></li>
+						</ul>
+						<p></p>
+						<div style="float: left; width: 50%;">
+							<h4 class="fragment" data-fragment-index="1">Exact Version</h4>
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="1"><code data-trim>
+ "require": {
+     "vendor/project": "<span class="fragment highlight-red" data-fragment-index="2">1.2.3</span>"
+ }
+								</code></pre>
+							</div>
+							<p class="smaller"></p>
+						</div>
+						<div style="float: left; width: 50%;">
+							<h4 class="fragment" data-fragment-index="3">Wildcard</h4>
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="3"><code data-trim>
+ "require": {
+     "vendor/project": "<span class="fragment highlight-red" data-fragment-index="4">1.2.*</span>"
+ }
+								</code></pre>
+							</div>
+							<p class="smaller fragment" data-fragment-index="5">Equivalency: <strong>&gt;=1.2</strong>, <strong>&lt;1.3</strong></p>
+						</div>
+						<div style="float: left; width: 50%;">
+							<h4 class="fragment" data-fragment-index="6">Range</h4>
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="6"><code data-trim>
+ "require": {
+     "vendor/project": "<span class="fragment highlight-red" data-fragment-index="7">&gt;=1.2</span>"
+ }
+								</code></pre>
+							</div>
+							<p class="smaller fragment" data-fragment-index="8">Valid Values: <strong>&gt;</strong>, <strong>&gt;=</strong>, <strong>&lt;</strong>, <strong>&lt;=</strong>, <strong>!=</strong></p>
+						</div>
+						<div style="float: left; width: 50%;">
+							<h4 class="fragment" data-fragment-index="9">Tilde</h4>
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="9"><code data-trim>
+ "require": {
+     "vendor/project": "<span class="fragment highlight-red" data-fragment-index="10">~1.2.3</span>"
+ }
+								</code></pre>
+							</div>
+							<p class="smaller fragment" data-fragment-index="11">Equivalency: <strong>&gt;=1.2.3</strong>, <strong>&lt;1.3</strong></p>
+						</div>
+					</section>
+					<section>
+						<h2>Repository</h2>
+						<div style="float: left; width: 60%;">
+							<ul>
+								<li>Package Source Types
+									<ul>
+										<li>Composer</li>
+										<li>Version Control Systems</li>
+										<li>PEAR</li>
+										<li>Package</li>
+									</ul>
+								</li>
+								<li>Declared in <span class="shadow">composer.json</span></li>
+								<li>Specified order is important</li>
+								<li>First match is used</li>
+								<li>Packagist is checked last</li>
+							</ul>
+						</div>
+						<pre class="fragment" style="float: left; width: 40%;" data-fragment-index="0"><code style="line-height: 1.7em;" data-trim>
+ {
+     "name": "vendor/project",
+     "require": {
+         "": ""
+     },
+     "repositories": [
+         {
+             "type": "",
+             "url": ""
+         }
+     ]
+ }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Packagist</h2>
+						<ul>
+							<li class="fragment" data-fragment-index="0">Default <strong>Composer</strong> repository type</li>
+							<li class="fragment" data-fragment-index="1">Enabled by default</li>
+							<li class="aside code fragment" data-fragment-index="1">
+								<pre><code data-trim>
+ "repositories": [
+     {
+         "packagist": false
+     }
+ ]
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="2">Suggested central repository</li>
+							<li class="fragment" data-fragment-index="3">Publish your packages</li>
+							<li class="fragment" data-fragment-index="4">Personal Packagist with <span class="shadow">Satis</span></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Version Control System</h2>
+						<ul>
+							<li class="fragment" data-fragment-index="0">Repository type to fetch <span class="shadow">GIT</span>, <span class="shadow">Subversion</span>, and <span class="shadow">Mercurial</span></li>
+							<li class="fragment" data-fragment-index="1">Package Version refers to VCS <strong>Branches</strong> and <strong>Tags</strong></li>
+							<li class="aside code" class="fragment" data-fragment-index="2">
+								<pre><code data-trim>
+ "require": {
+     "vendor/package": "dev­master"
+ },
+ "repositories": [
+     {
+         "type": "vcs",
+         "url": "https://bitbucket.org/vendor/package.git"
+     }
+ ]
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Platform Packages</h2>
+						<p class="fragment" data-fragment-index="0"><span class="shadow">Virtual packages</span> are components not installable by <strong>Composer</strong></p>
+						<ul>
+							<li class="fragment" data-fragment-index="1"><strong>php</strong> &ndash; Allows you to apply constraints on the PHP version</li>
+							<li class="aside code fragment" data-fragment-index="1">
+								<pre><code data-trim>
+ "require": {
+     "php": "&gt;=5.3.2"
+ }
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="2"><strong>ext-&lt;name&gt;</strong> &ndash; Allows requiring of PHP extensions</li>
+							<li class="aside code fragment" data-fragment-index="2">
+								<pre><code data-trim>
+ "require": {
+     "ext­curl": "*"
+ }
+								</code></pre>
+							</li>
+							<li class="fragment" data-fragment-index="3"><strong>lib-&lt;name&gt;</strong> &ndash; Allows version constraints of PHP libraries</li>
+							<li class="aside code fragment" data-fragment-index="3">
+								<pre><code data-trim>
+ "require": {
+     "lib­pcre": "&gt;=7.8"
+ }
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Autoloading</h2>
+						<p>Their are currently <span class="fragment highlight-blue" data-fragment-index="0">3</span> autoloader types supported</p>
+						<ul>
+							<li class="fragment" data-fragment-index="0"><strong>PSR-0</strong>
+								<ul class="fragment" data-fragment-index="2">
+									<li>Define mapping from <span class="shadow">Namespace</span> to <span class="shadow">Path</span></li>
+								</ul>
+							</li>
+							<li class="fragment" data-fragment-index="0"><strong>Classmap</strong>
+								<ul class="fragment" data-fragment-index="3">
+									<li>Create collection of <span class="shadow">Classname</span> to <span class="shadow">Filename</span> mappings</li>
+								</ul>
+							</li>
+							<li class="fragment" data-fragment-index="0"><strong>Files</strong>
+								<ul class="fragment" data-fragment-index="4">
+									<li>Require specified files to <span class="shadow">EagerLoad</span> on every request</li>
+								</ul>
+							</li>
+							<li class="aside code fragment" data-fragment-index="1">
+								<pre><code data-trim>
+ "autoload": {
+<span class="fragment" data-fragment-index="2">     "psr­0": { "Vendor\\Namespace\\": "src/" },</span>
+<span class="fragment" data-fragment-index="3">     "classmap": [ "lib/", "ext/library.php" ],</span>
+<span class="fragment" data-fragment-index="4">     "files": [ "ext/functions.php" ],</span>
+ }
+								</code></pre>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Install &amp; Update</h2>
+						<div style="float: left; width: 50%;">
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="0"><code data-trim>
+ $ composer install
+								</code></pre>
+							</div>
+						</div>
+						<div style="float: left; width: 50%;">
+							<div style="margin: 1ex;">
+								<pre class="fragment" data-fragment-index="0"><code data-trim>
+ $ composer update
+								</code></pre>
+							</div>
+						</div>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Reads <span class="shadow">composer.lock</span> from current directory if exists</li>
+							<li class="fragment" data-fragment-index="2">Else reads <span class="shadow">composer.json</span></li>
+							<li class="fragment" data-fragment-index="3">Resolves dependencies</li>
+							<li class="fragment" data-fragment-index="4">Creates / Updates <span class="shadow">composer.lock</span> with exact version info</li>
+							<li class="fragment" data-fragment-index="5">Installs / Updates packages in vendor directory</li>
+						</ul>
+						<p class="fragment" data-fragment-index="6">The vendor directory defaults to vendor in the root of the project<br>You can change this behavior with the <span class="shadow">vendor-dir</span> option</p>
+						<pre class="fragment" data-fragment-index="6"><code data-trim>
+ {
+     "vendor­dir": "packages"
+ }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Self Updating</h2>
+						<p><strong>Composer</strong> has a simple and straightforward update process.</p>
+						<pre class="fragment" data-fragment-index="0"><code data-trim>
+ $ composer self­-update
+						</code></pre>
+						<p class="smaller fragment" data-fragment-index="1">If you installed globally on Linux or OSX you need to use root privileges.</p>
+						<pre class="fragment" data-fragment-index="2"><code data-trim>
+ $ sudo composer self-­update
+ Updating to version <span style="color: green;">692015c12b4299dcee92bded7968b21a4b345891</span>.
+     Downloading: <span style="color: goldenrod;">100%</span>
+						</code></pre>
+						<p class="fragment" data-fragment-index="3"><strong>Composer</strong> is now updated to the latest version.</p>
+					</section>
+					<section>
+						<h2>Additional Resources</h2>
+						<ul class="smaller">
+							<li><a href="http://getcomposer.org/doc/articles/aliases.md">Aliases</a> - Alias branch names to versions</li>
+							<li><a href="http://getcomposer.org/doc/articles/custom-installers.md">Custom Installers</a> - Modify how package types are installed</li>
+							<li><a href="http://getcomposer.org/doc/articles/handling-private-packages-with-satis.md">Handling Private Packages</a> - Host your own repository</li>
+							<li><a href="http://getcomposer.org/doc/articles/scripts.md">Scripts</a> - Callbacks called during package install</li>
+							<li><a href="http://getcomposer.org/doc/articles/troubleshooting.md">Trubleshooting</a> - Solve common pitfalls</li>
+							<li><a href="http://getcomposer.org/doc/articles/vendor-binaries.md">Vendor Binaries</a> - CLI scripts from packages</li>
+						</ul>
+						<p></p>
+						<h3>FAQs</h3>
+						<ul class="smaller">
+							<li><a href="http://getcomposer.org/doc/faqs/how-do-i-install-a-package-to-a-custom-path-for-my-framework.md">How Do I Install A Package To A Custom Path For My Framework</a></li>
+							<li><a href="http://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md">Should I Commit The Dependencies In My Vendor Directory</a></li>
+							<li><a href="http://getcomposer.org/doc/faqs/why-are-version-constraints-combining-comparisons-and-wildcards-a-bad-idea.md">Why Are Version Constraints Combining Comparisons And Wildcards A Bad Idea</a></li>
+							<li><a href="http://getcomposer.org/doc/faqs/why-can't-composer-load-repositories-recursively.md">Why Can't Composer Load Repositories Recursively</a></li>
+						</ul>
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="../../js/head.min.js"></script>
+		<script src="../../js/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				history: true,
+				mouseWheel: true,
+				dependencies: [
+					{ src: '../../js/plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
