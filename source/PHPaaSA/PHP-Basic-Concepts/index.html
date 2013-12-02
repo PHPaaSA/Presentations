@@ -71,7 +71,7 @@
 						<ul class="smaller">
 							<li class="fragment roll-in" data-fragment-index="8">Write human-readable <strong class="fragment highlight-green" data-fragment-index="11">source code</strong></li>
 							<li class="fragment roll-in" data-fragment-index="9">Execute <em>source code</em> for <strong class="fragment highlight-green" data-fragment-index="11">debugging</strong> with an <em><strong class="fragment highlight-green" data-fragment-index="11">interpreter</strong></em></li>
-							<li class="fragment roll-in" data-fragment-index="10">Correct <em><strong class="fragment highlight-blue" data-fragment-index="11">syntax</strong></em> &amp; <em><strong class="fragment highlight-blue" data-fragment-index="11">run-time</strong></em> errors</li>
+							<li class="fragment roll-in" data-fragment-index="10">Correct <em><strong class="fragment highlight-green" data-fragment-index="11">syntax</strong></em> &amp; <em><strong class="fragment highlight-green" data-fragment-index="11">run-time</strong></em> errors</li>
 							<li class="fragment roll-in" data-fragment-index="11"><em>Repeat until successful&hellip;</em></li>
 						</ul>
 						<aside class="notes">
@@ -105,11 +105,12 @@
 							<li class="fragment roll-in" data-fragment-index="10"><span class="fragment highlight-blue" data-fragment-index="13">Executor</span>
 								<ol class="smaller">
 									<li class="fragment roll-in" data-fragment-index="11">Steps through the <em>op array</em></li>
-									<li class="fragment roll-in" data-fragment-index="12">Executing each <em>opcode</em> in the <span class="shadow">Zend Engine</span></li>
+									<li class="fragment roll-in" data-fragment-index="12">Executing each <em>opcode</em> in the <em>op array</em> with the <span class="shadow">Zend Engine</span></li>
 								</ol>
 							</li>
 						</ol>
 						<aside class="notes">
+Place colors earlier in the transitions.
 							(0)	A PHP script first gets consumed by the (1) preprocessor, which consists of a (2) lexer &amp; a (3) parser.
 							The lexer (4) reads the code, (5) interprets to tokens, (6) then passes the tokens to the parser.
 							The parser (7) creates an op array (8) AKA AST &amp; (9) passes the op array to the executer.
@@ -118,7 +119,7 @@
 					</section>
 					<section>
 						<h3 class="highlight-red">The Zend Engine <sup>(v2.0)</sup></h3>
-						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates an ideal computer; the <span class="shadow">VM architecture</span> provides hardware independent <em>flexibility</em> &amp; <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
+						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates an ideal computer.  The <span class="shadow">VM architecture</span> provides hardware independent <em>flexibility</em> &amp; <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
 						<h4 class="fragment" data-fragment-index="2"><span class="highlight-blue">The Virtual Machine</span></h4>
 						<ul style="width: 28ex;" class="center-box">
 							<li class="fragment" data-fragment-index="2">Keeps track of requests</li>
@@ -162,35 +163,36 @@
 					</section>
 					<section>
 						<h3>PHP Tags</h3>
-						<h3>Opening &amp; Closing tags</h3>
+						<h4><span class="fragment highlight-blue" data-fragment-index="8">Opening</span> &amp; <span class="fragment highlight-green" data-fragment-index="9">Closing</span> tags</h4>
 						<ol>
 							<li class="fragment" data-fragment-index="0">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?php</code></strong> &amp; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?php</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
 								<span class="float-right fragment" data-fragment-index="1">Always Available</span>
 							</li>
 							<li class="fragment" data-fragment-index="0">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;script language="php"&gt;</code></strong> &amp; <strong><code class="fragment highlight-green" data-fragment-index="9">&lt;/script&gt;</code></strong>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;script language="php"&gt;</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">&lt;/script&gt;</code></strong>
 								<span class="float-right fragment" data-fragment-index="1">Always Available</span>
 							</li>
 							<li class="fragment" data-fragment-index="2">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?</code></strong> &amp; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
 								<span class="float-right fragment" data-fragment-index="3">Short Style</span>
 							</li>
 							<li class="fragment" data-fragment-index="2">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?=</code></strong> &amp; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
-								<span class="float-right fragment" data-fragment-index="3"><span class="fragment" data-fragment-index="4">Echo - </span>Short Style</span>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;?=</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">?&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="3"><span class="fragment" data-fragment-index="4"> <span class="fragment highlight-red" data-fragment-index="10">Echo</span> - </span>Short Style</span>
 							</li>
 							<li class="fragment" data-fragment-index="5">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%</code></strong> &amp; <strong><code class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
 								<span class="float-right fragment" data-fragment-index="6">ASP Style</span>
 							</li>
 							<li class="fragment" data-fragment-index="5">
-								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%=</code></strong> &amp; <strong><cod class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
-								<span class="float-right fragment" data-fragment-index="6"><span class="fragment" data-fragment-index="7">Echo - </span>ASP Style</span>
+								<strong><code class="fragment highlight-blue" data-fragment-index="8">&lt;%=</code></strong> &hellip; <strong><code class="fragment highlight-green" data-fragment-index="9">%&gt;</code></strong>
+								<span class="float-right fragment" data-fragment-index="6"><span class="fragment" data-fragment-index="7"><span class="fragment highlight-red" data-fragment-index="10">Echo</span> - </span>ASP Style</span>
 							</li>
 						</ol>
 						<p class="fragment" data-fragment-index="8">The <strong class="highlight-blue">opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
 						<p class="fragment" data-fragment-index="9">The <strong class="highlight-green">closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
+						<p class="fragment" data-fragment-index="10">The <strong class="highlight-red">echo</strong> tags are short for <code><span class="highlight-blue">&lt;?php</span> echo; <span class="highlight-green">?&gt;</span></code></p>
 						<aside class="notes">
 							<ul>
 								<li>Tag Sets 1 &amp; 2 are always available
@@ -199,22 +201,22 @@
 										<li>Set 1 is most common &amp; recommended</li>
 									</ul>
 								</li>
-								<li>Tag Sets 3 &amp; 4 are Short style – Requires a configuration change
+								<li>Tag Sets 3 &amp; 4 are Short style – Requires a configuration change to enable them
 									<ul>
-										<li>Configuration file (php.ini) – short_open_tag</li>
-										<li>Compiled with --enable-short-tags</li>
+										<li>Configuration file (php.ini) – directive short_open_tag</li>
+										<li>Compiled with --enable-short-tags paramiter</li>
 										<li>Since ver 5.4 parser recognizes short tags regardless of configuration</li>
 									</ul>
 								</li>
-								<li>Tag Sets 5 &amp; 6 are ASP style – Requires a configuration change
+								<li>Tag Sets 5 &amp; 6 are ASP (Active Server Page) style – Requires a configuration change to enable them
 									<ul>
-										<li>Configuration file (php.ini) – asp_tags</li>
+										<li>Configuration file (php.ini) – directive asp_tags</li>
 									</ul>
 								</li>
 								<li>Since ver 5.3 parser allows an opening tag (minimum of one white space character) by itself in a file</li>
 								<li>A Close tag at the end of the file is optional
 									<ul>
-										<li>Helpful so unwanted white space does not occur</li>
+										<li>Helpful so unwanted white space don't occur, causing errors when dealing with headers.</li>
 									</ul>
 								</li>
 							</ul>
