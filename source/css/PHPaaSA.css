@@ -16,12 +16,29 @@ div.reveal {
 	padding-top: 0.5ex;
 	text-shadow: 2px 2px 0px rgb(127, 127, 127);
 }
+.reveal .highlight-red:not(.fragment) {
+	color: #ff2c2d;
+}
+.reveal .highlight-green:not(.fragment) {
+	color: #17ff2e;
+}
+.reveal .highlight-blue:not(.fragment) {
+	color: #1b91ff;
+}
 .reveal section img.no-border {
 	border: 0;
 	box-shadow: none;
 }
+.reveal section img.padded-border {
+	background-color: white;
+	border: 2px solid grey;
+	padding: 1ex;
+}
 .shadow {
 	text-shadow: 2px 2px 0px rgb(127, 127, 127);
+}
+.reveal .center-box {
+	margin: 0 auto;
 }
 .reveal .center {
 	text-align: center;
@@ -61,4 +78,22 @@ div.reveal {
 }
 .reveal .smaller {
 	font-size: 85%;
+}
+.reveal ol.counter,
+.reveal ol.counter ol {
+	counter-reset: item;
+}
+.reveal ol.counter > li,
+.reveal ol.counter ol > li {
+	list-style-type: none;
+}
+.reveal ol.counter.count-numeric > li:before,
+.reveal ol.counter.count-numeric ol > li:before {
+	content: counters(item, '.') '. ';
+	counter-increment: item;
+}
+.reveal ol.counter.count-alpha-lower > li:before,
+.reveal ol.counter.count-alpha-lower ol > li:before {
+	content: counter(item, lower-alpha) ') ';
+	counter-increment: item;
 }

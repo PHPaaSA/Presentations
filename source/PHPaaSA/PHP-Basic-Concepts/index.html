@@ -22,37 +22,139 @@
 					</section>
 					<section>
 						<h2>Topics</h2>
-						<p>In this presentation we'll cover the following:</p>
+						<p class="fragment" data-fragment-index="0">In this presentation we'll cover the following:</p>
 						<ul>
-							<li class="fragment" data-fragment-index="0">Parsing <span class="fragment" data-fragment-index="1">&ndash; Reading and Interpreting of a program</span></li>
+							<li class="fragment" data-fragment-index="0">Parsing <span class="fragment" data-fragment-index="1">&ndash; Reading &amp; Interpreting of a program</span></li>
 							<li class="fragment" data-fragment-index="0">Basic Syntax <span class="fragment" data-fragment-index="2">&ndash; Principles of constructing statements</span></li>
 							<li class="fragment" data-fragment-index="0">Types <span class="fragment" data-fragment-index="3">&ndash; Value distinction</span></li>
-							<li class="fragment" data-fragment-index="0">Variables <span class="fragment" data-fragment-index="4">&ndash; A place to store values (read-write)</span></li>
+							<li class="fragment" data-fragment-index="0">Variables <span class="fragment" data-fragment-index="4">&ndash; A place to store a value (read &amp; write)</span></li>
 							<li class="fragment" data-fragment-index="0">Constants <span class="fragment" data-fragment-index="5">&ndash; A place to store a value (read-only)</span></li>
-							<li class="fragment" data-fragment-index="0">Expressions <span class="fragment" data-fragment-index="6">&ndash; A place to get a value</span></li>
-							<li class="fragment" data-fragment-index="0">Operators <span class="fragment" data-fragment-index="7">&ndash; A value from one or more other values</span></li>
-							<li class="fragment" data-fragment-index="0">Control Structures <span class="fragment" data-fragment-index="8">&ndash; Manipulate programs direction of flow</span></li>
-							<li class="fragment" data-fragment-index="0">Functions <span class="fragment" data-fragment-index="9">&ndash; A callable routine that can take and return values</span></li>
+							<li class="fragment" data-fragment-index="0">Operators <span class="fragment" data-fragment-index="6">&ndash; A value from one or more other values</span></li>
+							<li class="fragment" data-fragment-index="0">Expressions <span class="fragment" data-fragment-index="7">&ndash; Stringing it all together</span></li>
+							<li class="fragment" data-fragment-index="0">Control Structures <span class="fragment" data-fragment-index="8">&ndash; Manipulating a programs direction of flow</span></li>
+							<li class="fragment" data-fragment-index="0">Functions <span class="fragment" data-fragment-index="9">&ndash; Callable routines that can take &amp; return values</span></li>
 							<li class="fragment" data-fragment-index="0">Language Specific (PHP) <span class="fragment" data-fragment-index="10">&ndash; What makes PHP, PHP</span></li>
 						</ul>
+						<aside class="notes">
+							We will be covering (0), parsing (1), basic Syntax (2), types (3), variables (4), constants (5), expressions (6), operators (7), control Structures (8), functions (9), language Specific (PHP) (10)
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Parsing</h2>
-						<p>Reading and Interpreting of a program</p>
+						<h3>Reading &amp; Interpreting of a program</h3>
+						<p class="fragment" data-fragment-index="0">PHP is an <strong>interpreted</strong> language, not a <strong>compiled</strong> one.</p>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Takes <strong>input</strong> (file or stream) containing <em class="shadow">text</em> and/or <em class="shadow">PHP instructions</em></li>
+							<li class="fragment" data-fragment-index="2">Creates <strong>output</strong> (stream), most commonly <em class="shadow">HTML</em></li>
+						</ul>
+						<p class="fragment" data-fragment-index="3"><strong class="shadow">Since PHP 4:</strong> The PHP parser interprets the <em>input</em> to produce <strong>opcodes</strong> for processing by the <strong>Zend Engine</strong><span class="fragment" data-fragment-index="4">;<br>this is called <strong class="highlight-red shadow">preprocessing</strong>.</span></p>
+						<aside class="notes">
+							(0) Interpreted not compiled, (1) input text/PHP instructions, (2) output often HTML.
+							(3) PHP parser interprets input and produces opcodes, for Zend Engine; (4) this is preprocessing.
+						</aside>
+					</section>
+					<section>
+						<h3><span class="fragment highlight-blue" data-fragment-index="4">Compiled</span> vs. <span class="fragment highlight-green" data-fragment-index="8">Interpreted</span></h3>
+						<h4>Programming Work-flow</h4>
+						<h5 class="fragment roll-in" data-fragment-index="0"><span class="fragment highlight-blue" data-fragment-index="4">Compiled</span></h5>
+						<ul>
+							<li class="fragment roll-in" data-fragment-index="1">Write human-readable <strong class="fragment highlight-blue" data-fragment-index="4">source code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="2">Use a <em><strong class="fragment highlight-blue" data-fragment-index="4">compiler</strong></em> to Translate <em>source code</em> and generate <strong class="fragment highlight-blue" data-fragment-index="4">machine code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="3">Execute <em>machine code</em> for <strong class="fragment highlight-blue" data-fragment-index="4">debugging</strong></li>
+							<li class="fragment roll-in" data-fragment-index="4"><em>Repeat&hellip;</em></li>
+						</ul>
+						<h5 class="fragment roll-in" data-fragment-index="5"><span class="fragment highlight-green" data-fragment-index="8">Interpreted</span></h5>
+						<ul>
+							<li class="fragment roll-in" data-fragment-index="6">Write human-readable <strong class="fragment highlight-green" data-fragment-index="8">source code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="7">Execute <em>source code</em> for <strong class="fragment highlight-green" data-fragment-index="8">debugging</strong> with an <em><strong class="fragment highlight-green" data-fragment-index="8">interpreter</strong></em></li>
+							<li class="fragment roll-in" data-fragment-index="8"><em>Repeat&hellip;</em></li>
+						</ul>
+						<aside class="notes">
+							(0) In a compiled work-flow; (1) write code, (2) compile, (3) execute, (4) repeat.
+							(5) In an interpreted work-flow; (6) write code, (7) execute, (8) repeat.
+						</aside>
+					</section>
+					<section>
+						<h3>Preprocessing</h3>
+						<p class="fragment roll-in" data-fragment-index="0">A PHP script: from human-readable code<br>to an executing program</p>
+						<ol class="counter count-numeric">
+							<li class="fragment roll-in" data-fragment-index="1"><span class="fragment highlight-blue" data-fragment-index="13">Preprocessor</span>
+								<ol class="smaller">
+									<li class="fragment roll-in" data-fragment-index="2"><span class="fragment highlight-red" data-fragment-index="13">Lexical Analyzer (lexer)</span>
+										<ol class="smaller">
+											<li class="fragment roll-in" data-fragment-index="4">Reads in the <em>human-readable</em> <strong>code</strong></li>
+											<li class="fragment roll-in" data-fragment-index="5">Interprets the <em>code</em> into <em>machine-digestible</em> <strong>tokens</strong></li>
+											<li class="fragment roll-in" data-fragment-index="6">Passes the <em>tokens</em> to the <span class="shadow">Parser</span></li>
+										</ol>
+									</li>
+									<li class="fragment roll-in" data-fragment-index="3"><span class="fragment highlight-red" data-fragment-index="13">Parser</span>
+										<ol class="smaller">
+											<li class="fragment roll-in" data-fragment-index="7">Creates an <strong>operation code array</strong> (opcode / op array) from the <em>tokens</em>
+												<div style="margin-left: 4.5ex;" class="fragment" data-fragment-index="8"><em>&ndash; The op array is also known as an <strong>abstract syntax tree</strong> (AST)</em></div>
+											</li>
+											<li class="fragment roll-in" data-fragment-index="9">Passes the <em>op array</em> to the <span class="shadow">Executor</span></li>
+										</ol>
+									</li>
+								</ol>
+							</li>
+							<li class="fragment roll-in" data-fragment-index="10"><span class="fragment highlight-blue" data-fragment-index="13">Executor</span>
+								<ol class="smaller">
+									<li class="fragment roll-in" data-fragment-index="11">Steps through the <em>op array</em></li>
+									<li class="fragment roll-in" data-fragment-index="12">Executing each <em>opcode</em> in the <span class="shadow">Zend Engine</span></li>
+								</ol>
+							</li>
+						</ol>
+						<aside class="notes">
+							(0)	A PHP script first gets consumed by the (1) preprocessor, which consists of a (2) lexer and a (3) parser.
+							The lexer (4) reads the code, (5) interprets to tokens, (6) then passes the tokens to the parser.
+							The parser (7) creates an op array (8) AKA AST and (9) passes the op array to the executer.
+							Then the interpreted code is passed to the (10) executor, which (11) iterates the op array and (12) executes the opcode.
+						</aside>
+					</section>
+					<section>
+						<h3 class="fragment highlight-red" data-fragment-index="5">The Zend Engine <sup>(v2.0)</sup></h3>
+						<h4 class="fragment highlight-blue" data-fragment-index="0">The Virtual Machine</h4>
+						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates a physical computer; the <span class="shadow">VM architecture</span> provides <em>flexibility</em> and <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
+						<ul style="width: 28ex;" class="center-box">
+							<li class="fragment" data-fragment-index="2">Keeps track of requests</li>
+							<li class="fragment" data-fragment-index="3">Processes scripting files</li>
+							<li class="fragment" data-fragment-index="4">Handles variables and resources</li>
+						</ul>
+						<p class="smaller"><span class="fragment roll-in" data-fragment-index="5">The <span class="shadow">opcode set</span> includes typical <strong>logic</strong> and <strong>math</strong> operations, as well as <strong>complex operations</strong> such as <code>include()</code>.</span>  <span class="fragment roll-in" data-fragment-index="6">A <span class="shadow">VM</span> is always slower than the host machine; extra speed is obtained by performing <em>complex instructions</em> as a single VM operation.</span></p>
+						<aside class="notes">
+							The Zend Engine (0) simulates a computer, flexibility &amp; portability.  (1) Processor has 75 ops, Zend Engine has ~150 ops.
+							Zend Engine (2) tracks requests, (3) processes scripts, (4) handles variables &amp; resources.
+							(5) opcode set includes logic &amp; math ops, as well as complex ops like `include()`. (6) VM is slower than host, extra speed obtained by complex instruction as single op
+						</aside>
+					</section>
+					<section>
+						<h3>The Execution of a PHP Script</h3>
+						<img style="margin-right: 3ex;" class="fragment float-right padded-border" data-fragment-index="0" src="assets/PHP-Script-Execution-Path.png">
+						<div style="margin-top: 8ex;" class="smaller">
+							<p class="fragment" data-fragment-index="1">For more information on Zend Engine:</p>
+							<p class="fragment" data-fragment-index="2"><a href="http://www.zend.com/engine2/ZendEngine-2.0.pdf">Zend Engine Version 2.0<br>Feature Overview and Design</a></p>
+							<p class="fragment" data-fragment-index="2"><a href="http://php.net/manual/en/internals2.opcodes.php">Zend Engine Opcodes</a></p>
+							<p class="fragment" data-fragment-index="2"><a href="http://php.find-info.ru/php/016/ch20lev1sec1.html">How the Zend Engine Works:<br>Opcodes and Op Arrays</a></p>
+						</div>
+						<aside class="notes">
+							A script 
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Basic Syntax</h2>
 						<p>Principles of constructing statements</p>
-						<ul>
+						<ul style="width: 18ex;" class="center-box">
 							<li class="fragment" data-fragment-index="0">PHP Tags</li>
 							<li class="fragment" data-fragment-index="1">Escaping</li>
 							<li class="fragment" data-fragment-index="2">Instruction Separation</li>
 							<li class="fragment" data-fragment-index="3">Comments</li>
 						</ul>
+						<aside class="notes">
+						</aside>
 					</section>
 					<section>
 						<h3>PHP Tags</h3>
@@ -83,8 +185,8 @@
 								<span class="float-right fragment" data-fragment-index="6"><span class="fragment" data-fragment-index="7">Echo - </span>ASP Style</span>
 							</li>
 						</ol>
-						<p class="fragment" data-fragment-index="8">The <strong class="fragment highlight-blue" data-fragment-index="8">opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
-						<p class="fragment" data-fragment-index="9">The <strong class="fragment highlight-green" data-fragment-index="9">closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
+						<p class="fragment" data-fragment-index="8">The <strong class="highlight-blue">opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
+						<p class="fragment" data-fragment-index="9">The <strong class="highlight-green">closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
 						<aside class="notes">
 							<ul>
 								<li>Tag Sets 1 and 2 are always available
@@ -117,62 +219,132 @@
 					<section>
 						<h3>Escaping</h3>
 						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 					<section>
 						<h3>Instruction Separation</h3>
 						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 					<section>
 						<h3>Comments</h3>
 						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Types</h2>
 						<p>Value distinction.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Variables</h2>
-						<p>A place to store values (read-write).</p>
+						<p>A place to store a value (read &amp; write).</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Constants</h2>
 						<p>A place to store a value (read-only).</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Expressions</h2>
-						<p>A place to get a value.</p>
+						<p>Stringing it all together.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Operators</h2>
 						<p>A value from one or more other values.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Control Structures</h2>
-						<p>Manipulate programs direction of flow.</p>
+						<p>Manipulating a programs direction of flow.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Functions</h2>
-						<p>A callable routine that can take and return values.</p>
+						<p>Callable routines that can take &amp; return values.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Language Specific (PHP)</h2>
 						<p>What makes PHP, PHP.</p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h3></h3>
+						<p></p>
+						<aside class="notes">
+						</aside>
 					</section>
 				</section>
 			</div>
