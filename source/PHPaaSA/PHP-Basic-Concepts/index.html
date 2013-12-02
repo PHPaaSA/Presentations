@@ -25,7 +25,7 @@
 						<p class="fragment" data-fragment-index="0">In this presentation we'll cover the following:</p>
 						<ul>
 							<li class="fragment" data-fragment-index="0">Parsing &ndash; Reading &amp; Interpreting of a program</li>
-							<li class="fragment" data-fragment-index="0">Basic Syntax <span class="fragment" data-fragment-index="1">&ndash; Principles of constructing statements</span></li>
+							<li class="fragment" data-fragment-index="0">Basic Syntax <span class="fragment" data-fragment-index="1">&ndash; The necessary framework of the language</span></li>
 							<li class="fragment" data-fragment-index="0">Types <span class="fragment" data-fragment-index="2">&ndash; Value distinction</span></li>
 							<li class="fragment" data-fragment-index="0">Variables <span class="fragment" data-fragment-index="3">&ndash; A place to store a (read &amp; write) value</span></li>
 							<li class="fragment" data-fragment-index="0">Constants <span class="fragment" data-fragment-index="4">&ndash; A place to store a (read-only) value</span></li>
@@ -49,43 +49,46 @@
 							<li class="fragment" data-fragment-index="1">Takes <strong>input</strong> (file or stream) containing <em class="shadow">text</em> and/or <em class="shadow">PHP instructions</em></li>
 							<li class="fragment" data-fragment-index="2">Creates <strong>output</strong> (stream), most commonly <em class="shadow">HTML</em></li>
 						</ul>
-						<p class="fragment" data-fragment-index="3"><strong class="shadow">Since PHP 4:</strong> The PHP parser interprets the <em>input</em> to produce <strong>opcodes</strong> for processing by the <strong>Zend Engine</strong><span class="fragment" data-fragment-index="4">;<br>this is called <strong class="highlight-red shadow">preprocessing</strong>.</span></p>
+						<p class="fragment" data-fragment-index="3"><strong class="shadow">Since PHP 4:</strong> The PHP parser <strong class="highlight-red shadow">preprocesses</strong> the <em>input</em> to produce <strong>opcodes</strong> for processing by the <strong>Zend Engine</strong>.</p>
 						<aside class="notes">
 							(0) Interpreted not compiled, (1) input text/PHP instructions, (2) output often HTML.
-							(3) PHP parser interprets input &amp; produces opcodes, for Zend Engine; (4) this is preprocessing.
+							(3) PHP parser preprocesses input &amp; produces opcodes, for Zend Engine; (4) this is preprocessing.
 						</aside>
 					</section>
 					<section>
-						<h3><span class="fragment highlight-blue" data-fragment-index="4">Compiled</span> vs. <span class="fragment highlight-green" data-fragment-index="8">Interpreted</span></h3>
+						<h3><span class="fragment highlight-blue" data-fragment-index="6">Compiled</span> vs. <span class="fragment highlight-green" data-fragment-index="11">Interpreted</span></h3>
 						<h4>Programming Work-flow</h4>
-						<h5 class="fragment roll-in" data-fragment-index="0"><span class="fragment highlight-blue" data-fragment-index="4">Compiled</span></h5>
-						<ul>
-							<li class="fragment roll-in" data-fragment-index="1">Write human-readable <strong class="fragment highlight-blue" data-fragment-index="4">source code</strong></li>
-							<li class="fragment roll-in" data-fragment-index="2">Use a <em><strong class="fragment highlight-blue" data-fragment-index="4">compiler</strong></em> to Translate <em>source code</em> &amp; generate <strong class="fragment highlight-blue" data-fragment-index="4">machine code</strong></li>
-							<li class="fragment roll-in" data-fragment-index="3">Execute <em>machine code</em> for <strong class="fragment highlight-blue" data-fragment-index="4">debugging</strong></li>
-							<li class="fragment roll-in" data-fragment-index="4"><em>Repeat&hellip;</em></li>
+						<h5 class="fragment roll-in" data-fragment-index="0"><span class="fragment highlight-blue" data-fragment-index="6">Compiled</span></h5>
+						<ul class="smaller">
+							<li class="fragment roll-in" data-fragment-index="1">Write human-readable <strong class="fragment highlight-blue" data-fragment-index="6">source code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="2">Use a <em><strong class="fragment highlight-blue" data-fragment-index="6">compiler</strong></em> to translate <em>source code</em> into <strong class="fragment highlight-blue" data-fragment-index="6">machine code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="3">Correct <em><strong class="fragment highlight-blue" data-fragment-index="6">compile-time</strong></em> errors</li>
+							<li class="fragment roll-in" data-fragment-index="4">Execute <em>machine code</em> with a <strong class="fragment highlight-blue" data-fragment-index="6">debugger</strong></li>
+							<li class="fragment roll-in" data-fragment-index="5">Correct <em><strong class="fragment highlight-blue" data-fragment-index="6">run-time</strong></em> errors</li>
+							<li class="fragment roll-in" data-fragment-index="6"><em>Repeat until successful&hellip;</em></li>
 						</ul>
-						<h5 class="fragment roll-in" data-fragment-index="5"><span class="fragment highlight-green" data-fragment-index="8">Interpreted</span></h5>
-						<ul>
-							<li class="fragment roll-in" data-fragment-index="6">Write human-readable <strong class="fragment highlight-green" data-fragment-index="8">source code</strong></li>
-							<li class="fragment roll-in" data-fragment-index="7">Execute <em>source code</em> for <strong class="fragment highlight-green" data-fragment-index="8">debugging</strong> with an <em><strong class="fragment highlight-green" data-fragment-index="8">interpreter</strong></em></li>
-							<li class="fragment roll-in" data-fragment-index="8"><em>Repeat&hellip;</em></li>
+						<h5 class="fragment roll-in" data-fragment-index="7"><span class="fragment highlight-green" data-fragment-index="11">Interpreted</span></h5>
+						<ul class="smaller">
+							<li class="fragment roll-in" data-fragment-index="8">Write human-readable <strong class="fragment highlight-green" data-fragment-index="11">source code</strong></li>
+							<li class="fragment roll-in" data-fragment-index="9">Execute <em>source code</em> for <strong class="fragment highlight-green" data-fragment-index="11">debugging</strong> with an <em><strong class="fragment highlight-green" data-fragment-index="11">interpreter</strong></em></li>
+							<li class="fragment roll-in" data-fragment-index="10">Correct <em><strong class="fragment highlight-blue" data-fragment-index="11">syntax</strong></em> &amp; <em><strong class="fragment highlight-blue" data-fragment-index="11">run-time</strong></em> errors</li>
+							<li class="fragment roll-in" data-fragment-index="11"><em>Repeat until successful&hellip;</em></li>
 						</ul>
 						<aside class="notes">
-							(0) In a compiled work-flow; (1) write code, (2) compile, (3) execute, (4) repeat.
-							(5) In an interpreted work-flow; (6) write code, (7) execute, (8) repeat.
+							(0) In a compiled work-flow; (1) write code, (2) compile, (3) correct errors, (4) execute, (5) correct errors, (6) repeat.
+							(7) In an interpreted work-flow; (8) write code, (9) execute, (10) correct errors, (11) repeat.
 						</aside>
 					</section>
 					<section>
 						<h3>Preprocessing</h3>
-						<p class="fragment roll-in" data-fragment-index="0">A PHP script: from human-readable code<br>to an executing program</p>
+						<p class="fragment roll-in" data-fragment-index="0">A PHP script, from human-readable code<br>to an executing program.</p>
 						<ol class="counter count-numeric">
 							<li class="fragment roll-in" data-fragment-index="1"><span class="fragment highlight-blue" data-fragment-index="13">Preprocessor</span>
 								<ol class="smaller">
 									<li class="fragment roll-in" data-fragment-index="2"><span class="fragment highlight-red" data-fragment-index="13">Lexical Analyzer (lexer)</span>
 										<ol class="smaller">
-											<li class="fragment roll-in" data-fragment-index="4">Reads in the <em>human-readable</em> <strong>code</strong></li>
-											<li class="fragment roll-in" data-fragment-index="5">Interprets the <em>code</em> into <em>machine-digestible</em> <strong>tokens</strong></li>
+											<li class="fragment roll-in" data-fragment-index="4">Reads in the <em>human-readable</em> <strong>source code</strong></li>
+											<li class="fragment roll-in" data-fragment-index="5">Interprets the <em>source code</em> into <em>machine-digestible</em> <strong>tokens</strong></li>
 											<li class="fragment roll-in" data-fragment-index="6">Passes the <em>tokens</em> to the <span class="shadow">Parser</span></li>
 										</ol>
 									</li>
@@ -114,15 +117,15 @@
 						</aside>
 					</section>
 					<section>
-						<h3 class="fragment highlight-red" data-fragment-index="5">The Zend Engine <sup>(v2.0)</sup></h3>
-						<h4 class="fragment highlight-blue" data-fragment-index="0">The Virtual Machine</h4>
-						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates a physical computer; the <span class="shadow">VM architecture</span> provides <em>flexibility</em> &amp; <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
+						<h3 class="highlight-red">The Zend Engine <sup>(v2.0)</sup></h3>
+						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates an ideal computer; the <span class="shadow">VM architecture</span> provides hardware independent <em>flexibility</em> &amp; <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
+						<h4 class="fragment" data-fragment-index="2"><span class="highlight-blue">The Virtual Machine</span></h4>
 						<ul style="width: 28ex;" class="center-box">
 							<li class="fragment" data-fragment-index="2">Keeps track of requests</li>
 							<li class="fragment" data-fragment-index="3">Processes scripting files</li>
 							<li class="fragment" data-fragment-index="4">Handles variables &amp; resources</li>
 						</ul>
-						<p class="smaller"><span class="fragment roll-in" data-fragment-index="5">The <span class="shadow">opcode set</span> includes typical <strong>logic</strong> &amp; <strong>math</strong> operations, as well as <strong>complex operations</strong> such as <code>include()</code>.</span>  <span class="fragment roll-in" data-fragment-index="6">A <span class="shadow">VM</span> is always slower than the host machine; extra speed is obtained by performing <em>complex instructions</em> as a single VM operation.</span></p>
+						<p style="padding: 0 2em;" class="smaller"><span class="fragment roll-in" data-fragment-index="5">The <span class="shadow">VM opcode set</span> includes <strong>simple logic &amp; math</strong> operations, as well as <strong>complex operations</strong> such as <code>include()</code>.</span>  <span class="fragment roll-in" data-fragment-index="6">A <span class="shadow">VM</span> is always slower than the host machine; some speed penalty is regained by performing <em>complex instructions</em> as a single <span class="shadow">VM</span> operation.</span></p>
 						<aside class="notes">
 							The Zend Engine (0) simulates a computer, flexibility &amp; portability.  (1) Processor has 75 ops, Zend Engine has ~150 ops.
 							Zend Engine (2) tracks requests, (3) processes scripts, (4) handles variables &amp; resources.
@@ -131,12 +134,13 @@
 					</section>
 					<section>
 						<h3>The Execution of a PHP Script</h3>
-						<img style="margin-right: 3ex;" class="fragment float-right padded-border" data-fragment-index="0" src="assets/PHP-Script-Execution-Path.png">
-						<div style="margin-top: 8ex;" class="smaller">
-							<p class="fragment" data-fragment-index="1">For more information on Zend Engine:</p>
-							<p class="fragment" data-fragment-index="2"><a href="http://www.zend.com/engine2/ZendEngine-2.0.pdf">Zend Engine Version 2.0<br>Feature Overview and Design</a></p>
-							<p class="fragment" data-fragment-index="2"><a href="http://php.net/manual/en/internals2.opcodes.php">Zend Engine Opcodes</a></p>
-							<p class="fragment" data-fragment-index="2"><a href="http://php.find-info.ru/php/016/ch20lev1sec1.html">How the Zend Engine Works:<br>Opcodes and Op Arrays</a></p>
+						<img style="margin: 15px 3ex 15px 1ex;" class="fragment float-right padded-border" data-fragment-index="0" src="assets/PHP-Script-Execution-Path.png">
+						<div class="smaller">
+							<p class="fragment" data-fragment-index="0">This diagram indicates why <span class="shadow">PHP</span> is an <strong>interpreter</strong> (<em>run-time compiler</em>).  A true <em>compiler</em> can't <em>compile</em> during execution.  <span class="shadow">PHP</span> <em>loads &amp; compiles</em> each file as it's required.</p>
+							<p class="fragment" data-fragment-index="1">For more information on the Zend Engine:</p>
+							<p class="fragment" data-fragment-index="1"><a href="http://www.zend.com/engine2/ZendEngine-2.0.pdf">Zend Engine Version 2.0<br>Feature Overview and Design</a></p>
+							<p class="fragment" data-fragment-index="1"><a href="http://php.net/manual/en/internals2.opcodes.php">Zend Engine Opcodes</a></p>
+							<p class="fragment" data-fragment-index="1"><a href="http://php.find-info.ru/php/016/ch20lev1sec1.html">How the Zend Engine Works:<br>Opcodes and Op Arrays</a></p>
 						</div>
 						<aside class="notes">
 							A script 
@@ -146,7 +150,7 @@
 				<section>
 					<section>
 						<h2>Basic Syntax</h2>
-						<h3>Principles of constructing statements</h3>
+						<h3>The necessary framework of the language</h3>
 						<ul style="width: 18ex;" class="center-box">
 							<li class="fragment" data-fragment-index="0">PHP Tags</li>
 							<li class="fragment" data-fragment-index="1">Escaping</li>
