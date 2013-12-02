@@ -36,7 +36,7 @@
 							<li class="fragment" data-fragment-index="0">Language Specific (PHP) <span class="fragment" data-fragment-index="9">&ndash; Why we choose PHP</span></li>
 						</ul>
 						<aside class="notes">
-							We will be covering (0), parsing (1), basic Syntax (2), types (3), variables (4), constants (5), expressions (6), operators (7), control Structures (8), functions (9), language Specific (PHP)
+							We will be covering (0), parsing (1), basic syntax (2), types (3), variables (4), constants (5), expressions (6), operators (7), control Structures (8), functions (9), language Specific (PHP)
 						</aside>
 					</section>
 				</section>
@@ -44,6 +44,15 @@
 					<section>
 						<h2>Parsing</h2>
 						<h3>Reading &amp; Interpreting of a program</h3>
+						<ul style="width: 22ex;" class="center-box">
+							<li class="fragment" data-fragment-index="0">The Input &amp; Output of PHP</li>
+							<li class="fragment" data-fragment-index="1">Compiled vs. Interpreted</li>
+							<li class="fragment" data-fragment-index="2">Preprocessing</li>
+							<li class="fragment" data-fragment-index="3">The Zend Engine <sup>(v2.0)</sup></li>
+						</ul>
+					</section>
+					<section>
+						<h3>The Input &amp; Output of PHP</h3>
 						<p class="fragment" data-fragment-index="0">PHP is an <strong>interpreted</strong> language, not a <strong>compiled</strong> one:</p>
 						<ul>
 							<li class="fragment" data-fragment-index="1">Takes <strong>input</strong> (file or stream) containing <em class="shadow">text</em> and/or <em class="shadow">PHP instructions</em></li>
@@ -83,26 +92,26 @@
 						<h3>Preprocessing</h3>
 						<p class="fragment roll-in" data-fragment-index="0">A PHP script, from human-readable code<br>to an executing program.</p>
 						<ol class="counter count-numeric">
-							<li class="fragment roll-in" data-fragment-index="1"><span class="fragment highlight-blue" data-fragment-index="13">Preprocessor</span>
+							<li class="fragment roll-in" data-fragment-index="1"><span class="fragment highlight-blue" data-fragment-index="3">Preprocessor</span>
 								<ol class="smaller">
-									<li class="fragment roll-in" data-fragment-index="2"><span class="fragment highlight-red" data-fragment-index="13">Lexical Analyzer (lexer)</span>
+									<li class="fragment roll-in" data-fragment-index="3"><span class="fragment highlight-red" data-fragment-index="5">Lexical Analyzer (lexer)</span>
 										<ol class="smaller">
-											<li class="fragment roll-in" data-fragment-index="4">Reads in the <em>human-readable</em> <strong>source code</strong></li>
-											<li class="fragment roll-in" data-fragment-index="5">Interprets the <em>source code</em> into <em>machine-digestible</em> <strong>tokens</strong></li>
-											<li class="fragment roll-in" data-fragment-index="6">Passes the <em>tokens</em> to the <span class="shadow">Parser</span></li>
+											<li class="fragment roll-in" data-fragment-index="5">Reads in the <em>human-readable</em> <strong>source code</strong></li>
+											<li class="fragment roll-in" data-fragment-index="6">Interprets the <em>source code</em> into <em>machine-digestible</em> <strong>tokens</strong></li>
+											<li class="fragment roll-in" data-fragment-index="7">Passes the <em>tokens</em> to the <span class="shadow">Parser</span></li>
 										</ol>
 									</li>
-									<li class="fragment roll-in" data-fragment-index="3"><span class="fragment highlight-red" data-fragment-index="13">Parser</span>
+									<li class="fragment roll-in" data-fragment-index="4"><span class="fragment highlight-red" data-fragment-index="5">Parser</span>
 										<ol class="smaller">
-											<li class="fragment roll-in" data-fragment-index="7">Creates an <strong>operation code array</strong> (opcode / op array) from the <em>tokens</em>
-												<div style="margin-left: 4.5ex;" class="fragment" data-fragment-index="8"><em>&ndash; The op array is also known as an <strong>abstract syntax tree</strong> (AST)</em></div>
+											<li class="fragment roll-in" data-fragment-index="8">Creates an <strong>operation code array</strong> (opcode / op array) from the <em>tokens</em>
+												<div style="margin-left: 4.5ex;" class="fragment" data-fragment-index="9"><em>&ndash; The op array is also known as an <strong>abstract syntax tree</strong> (AST)</em></div>
 											</li>
-											<li class="fragment roll-in" data-fragment-index="9">Passes the <em>op array</em> to the <span class="shadow">Executor</span></li>
+											<li class="fragment roll-in" data-fragment-index="10">Passes the <em>op array</em> to the <span class="shadow">Executor</span></li>
 										</ol>
 									</li>
 								</ol>
 							</li>
-							<li class="fragment roll-in" data-fragment-index="10"><span class="fragment highlight-blue" data-fragment-index="13">Executor</span>
+							<li class="fragment roll-in" data-fragment-index="2"><span class="fragment highlight-blue" data-fragment-index="3">Executor</span>
 								<ol class="smaller">
 									<li class="fragment roll-in" data-fragment-index="11">Steps through the <em>op array</em></li>
 									<li class="fragment roll-in" data-fragment-index="12">Executing each <em>opcode</em> in the <em>op array</em> with the <span class="shadow">Zend Engine</span></li>
@@ -110,41 +119,58 @@
 							</li>
 						</ol>
 						<aside class="notes">
-Place colors earlier in the transitions.
-							(0)	A PHP script first gets consumed by the (1) preprocessor, which consists of a (2) lexer &amp; a (3) parser.
-							The lexer (4) reads the code, (5) interprets to tokens, (6) then passes the tokens to the parser.
-							The parser (7) creates an op array (8) AKA AST &amp; (9) passes the op array to the executer.
-							Then the interpreted code is passed to the (10) executor, which (11) iterates the op array &amp; (12) executes the opcode.
+							(0)	A PHP script first gets consumed by the (1) preprocessor and is then passed to the (2) executor.
+							The preprocessor consists of a (3) lexer &amp; a (4) parser.
+							The lexer (5) reads the code, (6) interprets to tokens, (7) then passes the tokens to the parser.
+							The parser (8) creates an op array (9) AKA AST &amp; (10) passes the op array to the executer.
+							The executor (12) iterates the op array &amp; (13) executes the opcode.
 						</aside>
 					</section>
 					<section>
 						<h3 class="highlight-red">The Zend Engine <sup>(v2.0)</sup></h3>
-						<p class="smaller"><span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates an ideal computer.  The <span class="shadow">VM architecture</span> provides hardware independent <em>flexibility</em> &amp; <em>portability</em>.</span>  <span class="fragment roll-in" data-fragment-index="1">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span></p>
-						<h4 class="fragment" data-fragment-index="2"><span class="highlight-blue">The Virtual Machine</span></h4>
+						<p class="smaller">
+							<span class="fragment roll-in" data-fragment-index="0">The <span class="shadow">Zend Engine</span> simulates an ideal computer.</span>
+							<span class="fragment roll-in" data-fragment-index="1">The <span class="shadow">VM architecture</span> provides hardware independent <em>flexibility</em> &amp; <em>portability</em>.</span>
+							<span class="fragment roll-in" data-fragment-index="2">While a standard (x86) <strong>computer processor</strong> has <em>75 base operations</em>, the <strong>Zend Engine</strong> has approximately <em>150 instruction</em> (opcodes).</span>
+						</p>
+						<h4 class="fragment" data-fragment-index="3"><span class="highlight-blue">The Virtual Machine</span></h4>
 						<ul style="width: 28ex;" class="center-box">
-							<li class="fragment" data-fragment-index="2">Keeps track of requests</li>
-							<li class="fragment" data-fragment-index="3">Processes scripting files</li>
-							<li class="fragment" data-fragment-index="4">Handles variables &amp; resources</li>
+							<li class="fragment" data-fragment-index="3">Keeps track of requests</li>
+							<li class="fragment" data-fragment-index="4">Processes scripting files</li>
+							<li class="fragment" data-fragment-index="5">Handles variables &amp; resources</li>
 						</ul>
-						<p style="padding: 0 2em;" class="smaller"><span class="fragment roll-in" data-fragment-index="5">The <span class="shadow">VM opcode set</span> includes <strong>simple logic &amp; math</strong> operations, as well as <strong>complex operations</strong> such as <code>include()</code>.</span>  <span class="fragment roll-in" data-fragment-index="6">A <span class="shadow">VM</span> is always slower than the host machine; some speed penalty is regained by performing <em>complex instructions</em> as a single <span class="shadow">VM</span> operation.</span></p>
+						<p style="padding: 0 2em;" class="smaller">
+							<span class="fragment roll-in" data-fragment-index="6">The <span class="shadow">VM opcode set</span> includes <strong>simple logic &amp; math</strong> operations, as well as <strong>complex operations</strong> such as <code>include()</code>.</span>
+							<span class="fragment roll-in" data-fragment-index="7">A <span class="shadow">VM</span> is always slower than the host machine; some speed penalty is regained by performing <em>complex instructions</em> as a single <span class="shadow">VM</span> operation.</span>
+						</p>
 						<aside class="notes">
-							The Zend Engine (0) simulates a computer, flexibility &amp; portability.  (1) Processor has 75 ops, Zend Engine has ~150 ops.
-							Zend Engine (2) tracks requests, (3) processes scripts, (4) handles variables &amp; resources.
-							(5) opcode set includes logic &amp; math ops, as well as complex ops like `include()`. (6) VM is slower than host, extra speed obtained by complex instruction as single op
+							The Zend Engine (0) simulates a computer.
+							(1) The VM provides flexibility &amp; portability.
+							(2) x86 processor has 75 base ops, Zend Engine has ~150 instructions.
+							(3) Virtual Machine tracks requests, (4) processes scripts, (5) handles variables &amp; resources.
+							(6) opcode set includes logic &amp; math ops, as well as complex ops like `include()`.
+							(7) VM is slower than host, extra speed obtained by complex instruction as single op.
 						</aside>
 					</section>
 					<section>
 						<h3>The Execution of a PHP Script</h3>
 						<img style="margin: 15px 3ex 15px 1ex;" class="fragment float-right padded-border" data-fragment-index="0" src="assets/PHP-Script-Execution-Path.png">
 						<div class="smaller">
-							<p class="fragment" data-fragment-index="0">This diagram indicates why <span class="shadow">PHP</span> is an <strong>interpreter</strong> (<em>run-time compiler</em>).  A true <em>compiler</em> can't <em>compile</em> during execution.  <span class="shadow">PHP</span> <em>loads &amp; compiles</em> each file as it's required.</p>
-							<p class="fragment" data-fragment-index="1">For more information on the Zend Engine:</p>
-							<p class="fragment" data-fragment-index="1"><a href="http://www.zend.com/engine2/ZendEngine-2.0.pdf">Zend Engine Version 2.0<br>Feature Overview and Design</a></p>
-							<p class="fragment" data-fragment-index="1"><a href="http://php.net/manual/en/internals2.opcodes.php">Zend Engine Opcodes</a></p>
-							<p class="fragment" data-fragment-index="1"><a href="http://php.find-info.ru/php/016/ch20lev1sec1.html">How the Zend Engine Works:<br>Opcodes and Op Arrays</a></p>
+							<p>
+								<span class="fragment" data-fragment-index="1">This diagram indicates why <span class="shadow">PHP</span> is an <strong>interpreter</strong> (<em>run-time compiler</em>).</span>
+								<span class="fragment" data-fragment-index="2">A true <em>compiler</em> can't <em>compile</em> during execution.</span>
+								<span class="fragment" data-fragment-index="3"><span class="shadow">PHP</span> <em>loads &amp; compiles</em> each file as it's required.</span>
+							</p>
+							<p class="fragment" data-fragment-index="4">For more information on the Zend Engine:</p>
+							<p class="fragment" data-fragment-index="4"><a href="http://www.zend.com/engine2/ZendEngine-2.0.pdf">Zend Engine Version 2.0<br>Feature Overview and Design</a></p>
+							<p class="fragment" data-fragment-index="4"><a href="http://php.net/manual/en/internals2.opcodes.php">Zend Engine Opcodes</a></p>
+							<p class="fragment" data-fragment-index="4"><a href="http://php.find-info.ru/php/016/ch20lev1sec1.html">How the Zend Engine Works:<br>Opcodes and Op Arrays</a></p>
 						</div>
 						<aside class="notes">
-							A script 
+							(0) This diagram describes the internal workings of the Zend Engine.
+							(1) Indicates why PHP is interpreted.
+							(2) A compiler can't compile at run-time.
+							(3) PHP loads &amp; compiles as required.
 						</aside>
 					</section>
 				</section>
@@ -190,9 +216,9 @@ Place colors earlier in the transitions.
 								<span class="float-right fragment" data-fragment-index="6"><span class="fragment" data-fragment-index="7"><span class="fragment highlight-red" data-fragment-index="10">Echo</span> - </span>ASP Style</span>
 							</li>
 						</ol>
-						<p class="fragment" data-fragment-index="8">The <strong class="highlight-blue">opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
-						<p class="fragment" data-fragment-index="9">The <strong class="highlight-green">closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
-						<p class="fragment" data-fragment-index="10">The <strong class="highlight-red">echo</strong> tags are short for <code><span class="highlight-blue">&lt;?php</span> echo; <span class="highlight-green">?&gt;</span></code></p>
+						<p class="fragment" data-fragment-index="8">The <strong class="highlight-blue">Opening</strong> tag tells the interpreter to turn <strong>on</strong></p>
+						<p class="fragment" data-fragment-index="9">The <strong class="highlight-green">Closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
+						<p class="fragment" data-fragment-index="10">The <strong class="highlight-red">Echo</strong> tags are short for <code><span class="highlight-blue">&lt;?php</span> echo; <span class="highlight-green">?&gt;</span></code></p>
 						<aside class="notes">
 							<ul>
 								<li>Tag Sets 1 &amp; 2 are always available
