@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Introduction to Laravel - PHP as a Social Activity - Presentation</title>
+		<link rel="stylesheet" href="../../css/reveal.min.css">
+		<link rel="stylesheet" href="../../css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="../../css/PHPaaSA.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Introduction to Laravel<h1>
+					</section>
+					<section>
+						<h2>About Me</h2>
+						<ul>
+							<li>Started with PHP in 2000</li>
+							<li>Experience with Java, ASP, C++, etc...</li>
+							<li>Freelance web developer since 2009</li>
+							<li>Mostly CodeIgniter and Wordpress</li>
+							<li>Started the Laravel meet up to bring devs together and help the framework gain traction in Tampa Bay</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What is Laravel</h2>
+						<blockquote>&ldquo;&hellip;we’ve attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.&rdquo;</blockquote>
+					</section>
+					<section>
+						<h2>Better than the Rest?</h2>
+						<ul class="center-box" style="width: 27ex;">
+							<li>Authentication</li>
+							<li>Routing</li>
+							<li>Sessions</li>
+							<li>Packages (Called Bundles in L3)</li>
+							<li>Command-line utility (Artisan)</li>
+							<li>Eloquent ORM</li>
+							<li>Migrations</li>
+							<li>Unit-Testing</li>
+							<li>Well tested, over 900 tests on core</li>
+						</ul>
+						<p>Use what makes sense for your project!</p>
+					</section>
+					<section>
+						<h2>Requirements</h2>
+						<ul class="center-box" style="width: 34ex;">
+							<li>PHP &gt;= 5.3.7</li>
+							<li>MCrypt PHP Extension</li>
+							<li>PHP 5.5 may need PHP JSON Extension</li>
+							<li>Composer to manage dependencies</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Composer</h2>
+						<p>The problem that Composer solves is this:</p>
+						<ol class="counter count-alpha-lower">
+							<li>You have a project that depends on a number of libraries.</li>
+							<li>Some of those libraries depend on other libraries.</li>
+							<li>You declare the things you depend on.</li>
+							<li>Composer finds out which versions of which packages need to be installed, and installs them (meaning it downloads them into your project).</li>
+						</ol>
+						<p><a href="https://packagist.org">https://packagist.org</a></p>
+					</section>
+					<section>
+						<h2>Getting Started</h2>
+						<code>composer create-project laravel/laravel --prefer-dist</code>
+						<p>Make app/storage writable, that’s pretty much it</p>
+					</section>
+					<section>
+						<h2>Request Lifecycle</h2>
+						<p></p>
+						<div class="float-right" style="background: grey; color: maroon; margin: 6ex 20% 0 0; width: 30%;">
+							<p>Start Files
+							<br><br>Events
+							<br><br>Filters</p>
+						</div>
+						<div style="margin: 0 10%; width: 30%;">
+							<p>Request
+							<br><img style="border: 0; box-shadow: none; height: 45px; margin-bottom: 0; width: 35px;" src="../../images/down-arrow-grey.gif">
+							<br>Route
+							<br><img style="border: 0; box-shadow: none; height: 45px; margin-bottom: 0; width: 35px;" src="../../images/down-arrow-grey.gif">
+							<br>Controller
+							<br><img style="border: 0; box-shadow: none; height: 45px; margin-bottom: 0; width: 35px;" src="../../images/down-arrow-grey.gif">
+							<br>Model
+							<br><img style="border: 0; box-shadow: none; height: 45px; margin-bottom: 0; width: 35px;" src="../../images/down-arrow-grey.gif">
+							<br>View</p>
+						</div>
+					</section>
+					<section>
+						<h2>Routing</h2>
+						<ul class="center-box" style="width: 10ex;">
+							<li>GET</li>
+							<li>POST</li>
+							<li>PUT</li>
+							<li>DELETE</li>
+							<li>ANY</li>
+							<li>Filters (auth)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Controllers</h2>
+						<ul class="center-box" style="width: 30ex;">
+							<li>Better organization</li>
+							<li>All controllers extend BaseController</li>
+							<li>Shared logic goes in BaseController</li>
+							<li>Dependency injection</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Views (Blade)</h2>
+						<ul class="center-box" style="width: 40ex;">
+							<li>Contain your HTML</li>
+							<li>Separate controller logic from presentation logic</li>
+							<li>Build your own or use Blade</li>
+							<li>@section and @parent</li>
+							<li>Passing variables</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Eloquent ORM</h2>
+						<pre style="width: 50ex;"><code data-trim>
+ class User extends Eloquent {
+	protected $table = 'my_users';
+ }
+
+ $users = User::all();
+ $user = User::find(123);
+						</code></pre>
+					</section>
+					<section>
+						<h2>INSERT, UPDATE, DELETE</h2>
+						<pre style="width: 40ex;"><code data-trim>
+ $user = new User;
+ $user->name = 'John';
+ $user->save();
+
+ $user = User::find(123);
+ $user->email = 'john@foo.com';
+ $user->save();
+
+ $user->delete();
+						</code></pre>
+					</section>
+					<section>
+						<h2>Relationships</h2>
+						<ul class="center-box" style="width: 18ex;">
+							<li>One To One</li>
+							<li>One To Many</li>
+							<li>Many To Many</li>
+							<li>Polymorphic Relations</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Other Cool Stuff</h2>
+						<ul class="center-box" style="width: 22ex;">
+							<li>Timestamps</li>
+							<li>Eager loading</li>
+							<li>Accessors &amp; Mutators</li>
+							<li>Model Events</li>
+							<li>Converting To Arrays / JSON</li>
+							<li>and more...</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Migrations</h2>
+						<ul class="center-box" style="width: 26ex;">
+							<li>Version control for your database</li>
+							<li>Paired with Schema builder</li>
+							<li>Run with Artisan</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Unit Testing</h2>
+						<ul class="center-box" style="width: 30ex;">
+							<li>Supports PHPUnit out of the box</li>
+							<li>Easy to get started with Composer</li>
+							<li>Allows you to simulate a web browser</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Thank You!</h2>
+						<div>
+							<a href="https://twitter.com/eliwheaton">@eliwheaton</a><br>
+							<a href="https://www.facebook.com/eliwheaton">facebook.com/eliwheaton</a><br>
+							<a href="http://www.eliwheaton.com/">EliWheaton.com</a><br><br>
+						</div>
+						<div>
+							<strong>Other Resources:</strong><br>
+							<a href="http://codehappy.daylerees.com">codehappy.daylerees.com (L3)</a><br>
+							<a href="http://codebright.daylerees.com">codebright.daylerees.com (L4)</a><br>
+							<a href="http://culttt.com">culttt.com</a><br>
+							<a href="http://net.tutsplus.com">net.tutsplus.com</a>
+							<p>Let’s keep the meetups going!</p>
+						</div>
+					</section>
+					<section>
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="../../js/head.min.js"></script>
+		<script src="../../js/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				history: true,
+				mouseWheel: true
+			});
+		</script>
+	</body>
+</html>
