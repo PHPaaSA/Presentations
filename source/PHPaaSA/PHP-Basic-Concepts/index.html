@@ -14,13 +14,13 @@
 					<section>
 						<h1>PHP</h1>
 						<h2>Basic Concepts</h2>
-						<img class="stretch no-border" src="assets/PHP-Basic-Concepts.png" alt="PHP Basic Concepts">
+						<img class="stretch alpha0 no-border" src="assets/PHP-Basic-Concepts.png" alt="PHP Basic Concepts">
 						<aside class="notes">
 							Welcome to PHP Basic Concepts
 						</aside>
 					</section>
 					<section>
-						<img class="stretch no-border" src="../../images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
+						<img class="stretch alpha0 no-border" src="../../images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
 						<p>Presented by Sam Likins<br>PHP as a Social Activity</p>
 						<aside class="notes">
 							I'm Sam Likins, PHP advocate &amp; long-time user.
@@ -28,7 +28,7 @@
 					</section>
 					<section>
 						<h2>Topics</h2>
-						<div class="fragment" data-fragment-index="0">
+						<div class="fragment roll-in" data-fragment-index="0">
 							<p>In this presentation we'll cover the following:</p>
 							<ul>
 								<li>Parsing &ndash; Reading &amp; Interpreting of a program</li>
@@ -79,7 +79,7 @@
 							</ul>
 						</div>
 						<aside class="notes">
-							Parsing; Reading &amp; interpreting of a program.
+							Reading &amp; interpreting of a program.
 							In this section we'll cover:
 							(0) Compiled vs. interpreted languages &ndash; Programming work-flow,
 							(1) PHP input &amp; output &ndash; Processing the stream of data,
@@ -108,7 +108,6 @@
 							<li class="fragment roll-in" data-fragment-index="11"><em>Repeat until successful&hellip;</em></li>
 						</ul>
 						<aside class="notes">
-							Compiled vs. Interpreted languages;
 							Comparing the programming work-flow.
 							(0) In a compiled work-flow:
 							(1) You first write source code in a human readable format,
@@ -134,11 +133,10 @@
 						</ul>
 						<p class="fragment" data-fragment-index="3"><strong class="shadow">Since PHP 4:</strong> The PHP parser <strong class="highlight-red shadow">preprocesses</strong> the <em>input</em> to produce <strong>opcodes</strong> for processing by the <strong>Zend Engine</strong>.</p>
 						<aside class="notes">
-							The input &amp; output of PHP;
 							Processing the stream of data.
 							(0) PHP is an interpreted language, not a compiled one.
 							(1) PHP takes input containing text &amp; PHP instructions,
-							(2) Then creates outputs, typically HTML.
+							(2) Then creates output, typically HTML.
 							(3) Since PHP 4: the parser preprocesses the input to produce opcodes for the Zend Engine.
 						</aside>
 					</section>
@@ -173,7 +171,6 @@
 							</li>
 						</ol>
 						<aside class="notes">
-							Preprocessing;
 							Taking a PHP script from human-readable code to execution.
 							First the script gets consumed by,
 							(0) The preprocessor &amp; then is passed to
@@ -212,7 +209,7 @@
 							<span class="fragment roll-in" data-fragment-index="7">A <span class="shadow">VM</span> is always slower than the host machine; some speed penalty is regained by performing <em>complex instructions</em> as a single <span class="shadow">VM</span> operation.</span>
 						</p>
 						<aside class="notes">
-							Zend Engine version 2.0
+							Version 2.0 of the Zend Engine
 							(0) Simulates an ideal computer environment.
 							(1) The architecture of the Virtual Machine provides flexibility &amp; portability independent of the hardware.
 							(2) An x86 processor has 75 base operations; the Zend Engine has ~150 instructions (or opcodes).
@@ -220,7 +217,7 @@
 							(4) Processes scripts, &amp;
 							(5) Handles variables &amp; resources.
 							(6) The opcode set includes simple logic &amp; math operations, as well as complex operations like `include()`.
-							(7) A Virtual Machine is slower than its host, some speed is regained threw performing complex instruction as single operation.
+							(7) A Virtual Machine is slower than its host, some speed is regained threw performing complex instructions as single operation.
 						</aside>
 					</section>
 					<section>
@@ -241,7 +238,7 @@
 							</div>
 						</div>
 						<aside class="notes">
-							Execution of a PHP Script; peeking behind the virtual curtain.
+							Peeking behind the virtual curtain.
 							During the execution of a script, as you'll see in
 							(0) This diagram of the internal workings of the Zend Engine,
 							The script is read in, compiled, &amp; executed.
@@ -267,6 +264,7 @@
 							</ul>
 						</div>
 						<aside class="notes">
+							The necessary framework of the language.
 							(0)In this section we'll cover:
 							PHP Tags &ndash; Opening &amp; closing tags,
 							(1) Escaping &ndash; Switching the interpreter on &amp; off,
@@ -307,10 +305,10 @@
 						<p class="fragment" data-fragment-index="7">The <strong class="highlight-green">Closing</strong> tag tells the interpreter to turn <strong>off</strong></p>
 						<p class="fragment" data-fragment-index="8">The <strong class="highlight-red">Echo</strong> tags are short for <code><span class="highlight-blue">&lt;?php</span> echo; <span class="highlight-green">?&gt;</span></code></p>
 						<aside class="notes">
-							PHP opening &amp; closing tags tell the Zend Engine what's to be interpreted, &amp; what's not.
+							PHP opening &amp; closing tags tell the Zend Engine what's to be interpreted &amp; what's not.
 							There is a standard set, but like all things PHP, you have options.
 							(0) Tag sets 1 &amp; 2 are
-							(1) Always available; this first set is most common &amp; recommended.
+							(1) Always available; the first set is most common &amp; recommended.
 							Other tag sets should be avoided when developing for distribution, to avoid inconsistency across environments.
 							The remaining tag sets require changes to the PHP configuration file to enable them.
 							(2) Tag sets 3 &amp; 4 are
@@ -321,7 +319,7 @@
 							(6) The opening tag tells the interpreter to turn on, &amp;
 							(7) The closing tag tells the interpreter to turn off.
 							(8) Tag sets 4 &amp; 6 are echo tags, a convenience so you don't have to explicitly call echo.
-							Since PHP version 5.3, the parser won't throw an error if it consumes a file with only an open tag with &amp; a minimum of one trailing white space character.
+							Since PHP version 5.3, the parser won't throw an error if it consumes a file with only an open tag with na minimum of one trailing white space character.
 							A closing tag at the end of a file is optional.
 							If you deal with return headers, leaving it off is helpful, so unwanted white space doesn't cause errors.
 						</aside>
@@ -329,40 +327,116 @@
 					<section>
 						<h3>Escaping</h3>
 						<h4>Switching the interpreter on &amp; off</h4>
-						<p>Everything outside of the PHP tags is escaped; escaped content is passed threw as output.</p>
-						<ul style="width: 10ex;" class="float-right">
-							<li>HTML</li>
-							<li>XML</li>
-							<li>CSS</li>
-							<li>JS</li>
-							<li>CSV</li>
-							<li>SVG</li>
-							<li>Templates</li>
-						</ul>
-						<p>New-line characters directly after a closing tags are ignored and not output.</p>
-						<p>Escaping large blocks of output is more efficient than using an output function or command, such as <code>echo</code> or <code>print</code>.</p>
-						<p>Parsing in this manner allows PHP to be embedded in all sorts of different documents.</p>
+						<p class="fragment" data-fragment-index="0">Everything outside of the PHP tags is escaped.</p>
+						<pre style="width: 45ex;" class="fragment center-box" data-fragment-index="0"><code class="larger">
+<span class="fragment highlight-red" data-fragment-index="2"> &lt;html&gt;
+     &lt;body&gt;
+         &lt;h1&gt;</span><span class="fragment highlight-blue" data-fragment-index="3">&lt;?php echo $title; ?&gt;</span><span class="fragment highlight-red" data-fragment-index="2">&lt;/h1&gt;
+     &lt;/body&gt;
+ &lt;/html&gt;</span>
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Escaped content is passed threw as output.</p>
+						<pre style="width: 35ex;" class="fragment center-box" data-fragment-index="1"><code class="highlight-green larger">
+<span class="fragment" data-fragment-index="2"> &lt;html&gt;
+     &lt;body&gt;
+         &lt;h1&gt;</span><span class="fragment" data-fragment-index="3"><span class="highlight-blue">Escaping PHP</span></span><span class="fragment" data-fragment-index="2">&lt;/h1&gt;
+     &lt;/body&gt;
+ &lt;/html&gt;</span>
+						</code></pre>
 						<aside class="notes">
+							Switching the interpreter on &amp; off.
+							(0) Anything and everything outside of the PHP tags is escaped,
+							(1) Escaped content passes threw as output.
+							(2) As you see, all content not inside the PHP tags is output unaffected, &amp;
+							(3) Content inside the tags is processed and the result is output.
+						</aside>
+					</section>
+					<section>
+						<h3>Escaping</h3>
+						<pre style="width: 40ex;" class="center-box"><code class="larger">
+ &lt;html&gt;
+     &lt;body&gt;
+         &lt;h1&gt;&lt;?php echo $title; ?&gt;
+         <span class="fragment highlight-red" data-fragment-index="0">&lt;/h1&gt;</span>
+     &lt;/body&gt;
+ &lt;/html&gt;
+						</code></pre>
+						<p>A new-line character directly after a closing tag is ignored.</p>
+						<pre style="width: 35ex;" class="fragment center-box" data-fragment-index="0"><code class="larger">
+ &lt;html&gt;
+     &lt;body&gt;
+         &lt;h1&gt;Escaping PHP<span class="highlight-green">&lt;/h1&gt;</span>
+     &lt;/body&gt;
+ &lt;/html&gt;
+						</code></pre>
+						<aside class="notes">
+							(0) New-line characters following directly after a closing tag is ignored and not output.
+							(1) As you can see the ending H1 tag is now on the same line as its beginning tag. 
+						</aside>
+					</section>
+					<section>
+						<h3>Escaping</h3>
+						<p>Escaping large blocks of output is more efficient than using an output function or command, such as <code>echo</code> or <code>print</code>.</p>
+						<p class="fragment" data-fragment-index="0">Parsing in this manner allows PHP to be embedded in all sorts of different documents.</p>
+						<div style="width: 30ex;" class="center-box">
+							<ul style="width: 8ex;">
+								<li class="fragment" data-fragment-index="1">HTML</li>
+								<li class="fragment" data-fragment-index="4">CSS</li>
+							</ul>
+							<ul style="width: 8ex;" class="float-right">
+								<li class="fragment" data-fragment-index="3">SVG</li>
+								<li class="fragment" data-fragment-index="6">CSV</li>
+							</ul>
+							<ul style="width: 8ex;" class="float-right">
+								<li class="fragment" data-fragment-index="2">XML</li>
+								<li class="fragment" data-fragment-index="5">JS</li>
+							</ul>
+						</div>
+						<aside class="notes">
+							Using the escape method for outputting large blocks of content is more efficient than using a PHP function or command like echo or print.
+							(0) Parsing content in this manner allows PHP to be embedded with ease in many types of text files like:
+							(1) Hypertext Markup Language,
+							(2) Extensible Markup Language,
+							(3) Scalier Vector Graphics,
+							(4) Cascading Style Sheets,
+							(5) JavaScript, &amp;
+							(6) Comma Separated Value files.
 						</aside>
 					</section>
 					<section>
 						<h3>Instruction Separation</h3>
 						<h4>Individual statements made clear</h4>
-						<p>Separated with semicolon at end of statements.</p>
-						<p>Semicolon is not necessary for the last statement of a PHP block.</p>
+						<p>Statements are separated with a single semicolon.</p>
+						<pre style="width: 25ex;" class="fragment center-box" data-fragment-index="0"><code class="larger">
+ &lt;?php
+
+ $name = "PHPaaSA"<span class="fragment highlight-green" data-fragment-index="1">;</span>
+ <span class="fragment highlight-red" data-fragment-index="1">echo $name</span>
+
+ ?&gt;
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">A semicolon is not necessary for the last statement of a PHP block.</p>
 						<aside class="notes">
 						</aside>
 					</section>
 					<section>
 						<h3>Comments</h3>
 						<h4>Human readable annotations</h4>
-						<p>Single-line - Comment to the end of the line or PHP block</p>
-							<p>XML style PHP tags (</script>) don't break out of comments</p>
-							<p>// - C++ style comments</p>
-							<p># - Perl style comments</p>
-						<p>Multi line - Comment out large blocks of content</p>
-							<p>/* and */ - C style comments</p>
-							<p>First close comment tag ends the comment, don't nest Multi line comments.</p>
+						<ul>
+							<li>Single-line &ndash; Comment to the end of the line or PHP block
+								<ul>
+									<li>XML style PHP tags (<code>&lt;/script&gt;</code>) don't break out of comments</li>
+									<li><code>//</code> &ndash; C++ style comments</li>
+									<li><code>#</code> &ndash; Perl style comments</li>
+								</ul>
+							</li>
+							<li>Multi line &ndash; Comment out large blocks of content
+								<ul>
+									<li><code>/*</code> &amp; <code>*/</code> &ndash; C style comments</li>
+									<li>First close comment tag ends the comment, don't nest Multi line comments.</li>
+								</ul>
+							</li>
+						</ul>
 						<aside class="notes">
 						</aside>
 					</section>
@@ -387,7 +461,7 @@
 						<h3>Scalar Types</h3>
 						<p></p>
 						<div class="fragment roll-in" data-fragment-index="4">
-							<ul style="width: 38ex;" class="center-box">
+							<ul style="width: 40ex;" class="center-box">
 								<li>Boolean &ndash; Two possible values</li>
 								<li>Integer <span class="fragment" data-fragment-index="5">&ndash; <em>Whole Numbers</em>, fractions need not apply</span></li>
 								<li>Float <span class="fragment" data-fragment-index="6">&ndash; <em>Real Numbers</em>, decimals included</span></li>
