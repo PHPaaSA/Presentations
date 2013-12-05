@@ -25,6 +25,9 @@ div.reveal {
 .reveal .highlight-blue:not(.fragment) {
 	color: #1b91ff;
 }
+.reveal section img.alpha0 {
+	background: transparent;
+}
 .reveal section img.no-border {
 	border: 0;
 	box-shadow: none;
@@ -78,6 +81,9 @@ div.reveal {
 }
 .reveal .smaller {
 	font-size: 85%;
+}
+.reveal .larger {
+	font-size: 115%;
 }
 .reveal ol.counter,
 .reveal ol.counter ol {
