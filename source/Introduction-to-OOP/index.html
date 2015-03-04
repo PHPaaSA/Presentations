@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Introduction to Object-Oriented Programming - PHP as a Social Activity - Presentation</title>
+		<link rel="stylesheet" href="../assets/css/reveal.min.css">
+		<link rel="stylesheet" href="../assets/css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="../assets/css/PHPaaSA.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h1>Introduction to Object-Oriented Programming<h1>
+					</section>
+					<section>
+						<h2>Object-Oriented Programming</h2>
+						<p>In this section we'll cover:</p>
+						<ul>
+							<li>Classes vs. objects - Definitions vs. instances</li>
+							<li>Properties - Variables within a class</li>
+							<li>Methods - Functions within a class</li>
+							<li>Visibility and scope - A class' right to privacy</li>
+							<li>Inheritance - It's classes all the way down!</li>
+							<li>Static members - Using a class without an object</li>
+							<li>Abstraction - Defining the requirements of a class</li>
+							<li>Traits - Reusable code</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Classes vs. Objects</h2>
+						<ul>
+							<li>A <strong>class</strong> is a definition of an object. It defines what an object is, what its members are and how it behaves during its lifetime.
+								<blockquote>Member: an individual property, method, etc. inside the class</blockquote>
+							</li>
+							<li>An <strong>object</strong> is an instance of a class. It's a variable that contains a copy of the class which can then be changed
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Classes vs. Objects (Example)</h2>
+						<ul>
+							<li>A Ball class defines the properties of a ball: size, color, diameter, what happens when you kick it, etc.</li>
+							<li>A ball object is an instance of the Ball class. The Ball class can be used to create a baseball, basketball, kickball, etc. by changing the properties defined in the class</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Creating A Class</h2>
+						<pre>// Our class has one property, which stores the ball's color as plain text<br />class Ball {<br />	public $color = "red";<br />}
+						</pre>
+					</section>
+					<section>
+						<h2>Creating A Class (Cont.)</h2>
+						<ul>
+							<li><strong>Members</strong> are the components of a class. When a class is instantiated, you can access the members using [ObjectName]->[MemberName]</li>
+							<ul><li>For example, <em>$basketball->color = "Orange";</em> sets the color of a basketball object to orange</li></ul>
+							<li><strong>$this</strong> is a special keyword that lets an object refer to itself</li>
+							<ul><li>Remember not to use the object name when inside the class!</li></ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Creating An Object</h2>
+						<ul>
+							<li><strong>new</strong> is a special keyword that creates an object from a class. You can pass values (called parameters) to a new object and access them in the object's <em>constructor</em></li>
+							<ul><li>The constructor is a special function that runs when an object is created. PHP has several special functions</li></ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Creating An Object (Cont.)</h2>
+						<pre>// Include the PHP file that defines the class<br />include 'Ball.php';<br /><br />//Create an instance of the Ball class and store it as an object in the myBall variable</br>$myBall = <strong>new</strong> Ball();<br /><br />//Print the color of the ball ("red")<br/>print $myBall->color;</pre>
+					</section>
+					<section>
+						<h2>Properties</h2>
+						<ul>
+							<li>A <strong>property</strong> is a variable defined in a class. Properties can be created empty or can be <em>initialized</em> with a value</li>
+							<li>Properties can be accessed from inside and outside the class, but are typically accessed using <em>getters</em> and <em>setters</em></li>
+							<ul><li>Getters return the value of a property and setters apply a value to a property. This lets you add restrictions, access control, and validation to a property</li></ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Properties (Cont.)</h2>
+						<pre>class Ball {<br /><br />	// Stores "red" when the object is created</br>	private $color = "red";</br /><br />	// Getter for $color. Returns "red"<br />	public function getColor() { <br />		return $this->color;<br />	}<br />}</pre>
+					</section>
+					<section>
+						<h2>Methods</h2>
+						<ul>
+							<li>A <strong>method</strong> is a function defined in a class</li>
+							<li>Methods can accept multiple values as input, return values as a variable, or modify properties in a class</li>
+							<li>Methods can act on the class itself using the <strong>$this</strong> or <strong>self</strong> keywords</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Methods (Cont.)</h2>
+						<pre>class Ball {<br />	public function getSize($diameter) {<br />			return "This ball is " . $diameter . " inches wide.";<br />	}<br />}<br /><br />$myBall = new Ball(); <br /><br />// Prints "This ball is 10 inches wide."<br />print $myBall->getSize(10);</pre>
+					</section>
+					<section>
+						<h2>Visibility</h2>
+						<ul>
+							<li><strong>Visibility</strong> determines which parts of the script can access the class' members
+								<ul>
+									<li><em>Public</em>: Up for grabs. Anyone can access</li>
+									<li><em>Private</em>: Can only be accessed from within the same class</li>
+									<li><em>Protected</em>: Can be accessed from within the class and by <em>parent</em> or <em>inherited</em> classes
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Visibility (Cont.)</h2>
+						<pre>$myBall = new Ball();<br /><br />// Throws a tantrum. Remember, Ball::color is private!<br />print $myBall->color;<br /><br />// ...but getColor is public, so it works<br />print $myBall->getColor();</pre>
+					</section>
+					<section>
+						<h2>Scope</h2>
+						<ul>
+							<li><strong>Scope</strong> is the area in which a single variable can be accessed
+								<ul>
+									<li><em>Global</em>: PHP has a single scope for each running script</li>
+									<li><em>Local</em>: Declared within a function and has its own values</li>
+									<li>If a local variable overrides a global variable, the global variable can be accessed using the <strong>global</strong> keyword</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Scope (Cont.)</h2>
+						<pre>$basketText = "Basket";<br />$ballText = "ball";<br /><br />function printText() {<br />	global $basketText;<br />	return $basketText . $ballText;<br />}<br /><br />// Only prints "Basket"<br />print printText();</pre>
+					</section>
+					<section>
+						<h2>Inheritance</h2>
+						<ul>
+							<li><strong>Inheritance</strong> lets one class <em>extend</em> another</li>
+							<li>An extended class is called the <em>parent</em>; the extending class is called the <em>child</em></li>
+							<li>Children inherit the members of the parent. Children can also access the <em>protected</em> and <em>public</em> members of their parent class</li>
+							<li>Make sure you include the parent class in your script before extending it! Otherwise, PHP will complain about a missing class</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Inheritance (Cont.)</h2>
+						<pre>// Kickball.php<br />include 'Ball.php';<br />class Kickball extends Ball {<br />	private $size = 10;<br /><br />	public function getSize() {<br />				return $this->size;<br />		}<br />}<br /><br />$myKickball = new Kickball();<br /><br />// prints "10, red";<br />print $myKickball->getSize() . ", " . $myKickball->getColor();</pre>
+					</section>
+					<section>
+						<h2>Static Members</h2>
+						<ul>
+							<li>Static members are accessed through the class instead of through an object
+								<ul>
+									<li>Accessed using [ClassName]::[Member]</li>
+									<li>Instead of <strong>this</strong>, the <strong>self</strong> keyword is used to self-reference members</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Static Members (Cont.)</h2>
+						<pre>class Volleyball extends Ball {<br />	private static $manufacturer = "Wilson";<br /><br />	public static function getManufacturer() {<br />				return self::$manufacturer;<br />	}<br />}<br /><br />// Prints "Wilson"<br />print Volleyball::getManufacturer();
+					</section>
+					<section>
+						<h2>Abstraction</h2>
+						<ul>
+							<li>An <strong>abstract</strong> class can't be instantiated</li>
+							<li>Abstract classes lay out the requirements of the class, which are then <em>implemented</em> in a regular class</li>
+							<li>Abstract classes can still provide pre-defined properties and methods</li>
+							<li>Abstract classes and members are defined using the <em>abstract</em> keyword</li>
+							<li>Derived classes <em>extend</em> the abstract class</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Abstraction (Cont.)</h2>
+						<pre>abstract class Sphere {<br />	abstract public function getColor();<br />	public function getCircumference($radius) {<br />		return round(2 * 3.14159 * $radius);<br />	}<br />}<br /><br />class Ball extends Sphere {<br />	private $color = "red";<br />	public function getColor() {<br />		return $this->color;<br />	}<br />}<br /><br />$myBall = new Ball();<br /><br />// Prints "red, 10"<br />print $myBall->getColor() . ", " . $myBall->getCircumference(1.592);</pre>
+					</section>
+					<section>
+						<h2>Traits</h2>
+						<ul>
+							<li>A <strong>trait</strong> is a block of reusable code used across multiple classes</li>
+							<li>Traits define an executable block of code that gets <em>used</em> by classes</li>
+							<li>The order for precedence for identical traits is class → trait → inherited class</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Traits (Cont.)</h2>
+						<pre>trait BallPhysics {<br />	public function Bounce() {<br />		print "Boing!";<br />	}<br />}<br /><br />class Ball {<br />	use BallPhysics;<br />}<br /><br />$myBall = new Ball();<br /><br />// Prints "Boing!"<br />print $myBall->Bounce();</pre>
+					</section>
+					<section>
+						<h2>Happy Hacking!</h2>
+						<span style="text-align:center">
+						<br />
+						<strong>More resources:</strong>
+						<br />
+						<br />
+						<a href="http://php.net/manual/en/language.oop5.php" target="_blank">PHP: Classes and Objects</a> (php.net)
+						<br />
+						<br />
+						<a href="http://www.killerphp.com/tutorials/object-oriented-php/" target="_blank">Object Oriented PHP for Beginners</a> (KillerPHP)
+						<br />
+						<br />
+						<a href="http://www.meetup.com/PHPaaSA/messages/boards/" target="_blank">PHPaaSA Message Board</a> (Meetup)
+						</span>
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="../assets/js/head.min.js"></script>
+		<script src="../assets/js/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				history: true,
+				mouseWheel: true
+			});
+		</script>
+	</body>
+</html>
