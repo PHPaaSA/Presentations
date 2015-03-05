@@ -51,23 +51,11 @@ update_project reveal.js	css/theme/*.css		assets/css/theme/
 update_project reveal.js	lib/css/*.css		assets/css/
 update_project reveal.js	lib/font/*			assets/font/
 
-update_project reveal.js	index.html			Reveal.html
-update_project reveal.js	test/examples/*		Reveal/
-
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-project_remove assets/js/plugin/markdown/example.html
+project_remove assets/js/plugin/*/*.html
+project_remove assets/js/plugin/*/*.md
 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 replace_string assets/css/theme/*	"\"../../lib/font" "\"../../font"
-replace_string Reveal.html			"href=\"css/" "href=\"./assets/css/"
-replace_string Reveal.html			"href=\"lib/css/" "href=\"./assets/css/"
-replace_string Reveal.html			"href=\"lib/js/" "href=\"./assets/js/"
-replace_string Reveal.html			"src=\"lib/js/" "src=\"./assets/js/"
-replace_string Reveal.html			"src=\"js/" "src=\"./assets/js/"
-replace_string Reveal.html			"src: 'lib/js/" "src: './assets/js/"
-replace_string Reveal.html			"src: 'plugin/" "src: './assets/js/plugin/"
-replace_string Reveal/*.html			"href=\"../../css/" "href=\"../css/"
-replace_string Reveal/*.html			"src=\"../../js/" "src=\"../js/"
-replace_string Reveal/*.html			"src=\"../../lib/js/" "src=\"../js/"
