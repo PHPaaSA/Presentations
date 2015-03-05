@@ -3,9 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Title Subtitle - PHP as a Social Activity - Presentation</title>
-		<link rel="stylesheet" href="../css/reveal.min.css">
-		<link rel="stylesheet" href="../css/theme/sky.css" id="theme">
-		<link rel="stylesheet" href="../css/PHPaaSA.css">
+
+		<meta name="description" content="A short decription about the presentaiton">
+		<meta name="author" content="Your Name Here">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../assets/css/reveal.min.css">
+		<link rel="stylesheet" href="../assets/css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="../assets/css/PHPaaSA.css">
+
+		<!--[if lt IE 9]>
+		<script src="../assets/js/html5shiv.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<div class="reveal">
@@ -14,23 +27,45 @@
 					<section>
 						<h1>Title</h1>
 						<h2>Subtitle</h2>
-						<img class="stretch no-border" src="assets/logo.png" alt="Logo">
+						<img class="stretch no-border" src="./assets/logo.png" alt="Logo">
 					</section>
 					<section>
-						<img class="stretch no-border" src="../images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
-						<p>Presented by: Sam Likins<br>PHP as a Social Activity</p>
+						<img class="stretch no-border" src="../assets/images/PHPaaSA-Slide.png" alt="PHP as a Social Activity">
+						<p>Presented by: Your Name Here<br>PHP as a Social Activity</p>
 					</section>
 					<section>
 					</section>
 				</section>
 			</div>
 		</div>
-		<script src="../js/head.min.js"></script>
-		<script src="../js/reveal.min.js"></script>
+		<script src="../assets/js/head.min.js"></script>
+		<script src="../assets/js/reveal.min.js"></script>
 		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
-				mouseWheel: true
+				mouseWheel: true,
+				// controls: true,
+				// progress: true,
+				// center: true,
+
+				// theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				// transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				// dependencies: [
+				// 	{ src: '../assets/js/classList.js', condition: function() { return !document.body.classList; } },
+				// 	{ src: '../assets/js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				// 	{ src: '../assets/js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				// 	{ src: '../assets/js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				// 	{ src: '../assets/js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				// 	{ src: '../assets/js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+				// ]
 			});
 		</script>
 	</body>
