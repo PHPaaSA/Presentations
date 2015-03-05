@@ -1,6 +1,6 @@
-[submodule "reveal.js"]
-	path = reveal.js
+[submodule "modules/reveal.js"]
+	path = modules/reveal.js
 	url = https://github.com/hakimel/reveal.js.git
-[submodule "impress.js"]
-	path = impress.js
+[submodule "modules/impress.js"]
+	path = modules/impress.js
 	url = https://github.com/bartaz/impress.js.git
